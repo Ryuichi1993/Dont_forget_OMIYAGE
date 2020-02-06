@@ -24,7 +24,12 @@ resource :end_users do
 end
 
 namespace :producers do
- resources :producers
+ resources :producers do
+ 	get 'shops',    on: :member
+  get 'products', on: :member
+ end
+ 	get 'shops',    to: 'producers#shops'
+  get 'products', to: 'producers#products'
  resources :shops
  resources :products
 end

@@ -1,7 +1,7 @@
 <%= render 'producers/producers/header' %>
 <h1>shop index</h1>
 
-<h2><%= @producer.email %>のショップ一覧</h2>
+<h2><%= current_producer.email %>のショップ一覧</h2>
 
 	<table>
 		<thead>
@@ -13,9 +13,10 @@
 		<tbody>
 			<tr>
 				<td><%= shop.shop_name %></td>
+				<th><%= attachment_image_tag shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
+				<th><%= link_to "詳細を見る", producers_shop_path(shop) %>
 				<td><%= link_to "編集", edit_producers_shop_path(shop) %>
 				<td><%= link_to "削除", producers_shop_path(shop), method: :delete %>
-				<th><%= attachment_image_tag shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
 			</tr>
 		</tbody>
 		<% end %>

@@ -1,2 +1,15 @@
-<h1>Producers::Producers#show</h1>
-<p>Find me in app/views/producers/producers/show.html.erb</p>
+<%= render 'producers/producers/header' %>
+
+
+<h1><%= current_producer.email %>さんのマイページ</h1>
+	<%= link_to "ログアウト", destroy_producer_session_path, method: :delete %>
+<br>
+	<%= link_to "ショップ登録を行う", new_producers_shop_path(current_producer) %>
+<br>
+
+	<%= link_to "商品登録を行う", new_producers_product_path(current_producer) %>
+<br>
+<br>
+	<%= link_to "ショップ一覧", shops_producers_producer_path(current_producer) %>
+<br>
+	<%= link_to "商品一覧", products_producers_producer_path(current_producer) %>

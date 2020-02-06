@@ -14,7 +14,7 @@
 	<br>
 
 	<div class="field">
-	<h3>SHOP 住所</h3>
+	<p>SHOP 住所</p>
   		<%= f.label :postcode, "郵便番号" %>
   		<%= f.text_field :postcode %>
     </div>
@@ -32,6 +32,7 @@
 	</div>
 	<br>
 
+	<p>※番地名まで記入をお願いします　例: 4丁目-5-1など</p>
 	<div class="field">
   		<%= f.label :address_street, "番地" %>
   		<%= f.text_field :address_street %>
@@ -44,15 +45,29 @@
     </div>
   	<br>
 
+	<p>※記入例: 水・金曜日</p>
+  	<div class="field">
+  		<%= f.label :regular_holiday, "定休日" %>
+  		<%= f.text_field :regular_holiday %>
+	</div>
+	<br>
+
 	<div class="field">
-	<h3>営業時間 (例:10時~21時)</h3>
+	<p>営業時間</p>
 		<%= f.label :open, "OPEN" %>
-		<%= f.text_field :open %>
+		<%= f.text_field :open %>時
 	</div>
 
 	<div class="field">
 		<%= f.label :close, "CLOSE" %>
-		<%= f.text_field :close %>
+		<%= f.text_field :close %>時
+	</div>
+	<br>
+
+	<p>※記入例 :123-4567-890</p>
+	<div class="field">
+		<%= f.label :phone_number, "店舗電話番号" %>
+		<%= f.text_field :phone_number.to_s %>
 	</div>
 	<br>
 

@@ -1,3 +1,4 @@
+<%= render 'producers/producers/header' %>
 <h1>商品登録ページ</h1>
 	<%= form_for(@product, url: producers_products_path) do |f| %>
 	<% if @product.errors.any? %>
@@ -12,7 +13,7 @@
 	<% end %>
 		<div calss ="field">
 			<%= f.label :shop_id %>
-			<%= f.collection_select :shop_id, @shops, :id, :shop_name %>
+			<%= f.collection_select :shop_id, @shop, :id, :shop_name %>
 		</div>
 		<br>
 
@@ -39,6 +40,7 @@
 			<%= f.attachment_field :product_image %>
 		</div>
 		<br>
-
+		
+		<%= f.hidden_field :producer_id, value: current_producer.id %>
 		<%= f.submit "送信する" %>
 	<% end %>

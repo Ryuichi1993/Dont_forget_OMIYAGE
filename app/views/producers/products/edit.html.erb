@@ -1,2 +1,42 @@
-<h1>Producers::Products#edit</h1>
-<p>Find me in app/views/producers/products/edit.html.erb</p>
+<%= render 'producers/producers/header' %>
+<h1><%= @product.product_name%>の編集ページ</h1>
+	<%= form_for(@product, url: producers_product_path(@product), method: :patch) do |f| %>
+	<% if @product.errors.any? %>
+	<div class="alert alert-danger" role class="alert">
+		<p class="error-count"><%= @product.errors.full_messages.count %>errors prohibited this product from being saved:</p>
+		<ul>
+			<% @product.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+		<br>
+
+		<div class="field">
+  			<%= f.label :product_name, "商品名" %>
+  			<%= f.text_field :product_name %>
+		</div>
+		<br>
+
+		<div class="field">
+			<%= f.label :product_text, "商品説明" %>
+			<%= f.text_field :product_text %>
+		</div>
+		<br>
+
+		<div class="field">
+			<%= f.label :product_price, "商品価格" %>
+			<%= f.text_field :product_price %>
+		</div>
+		<br>
+
+		<div class="field">
+			<%= f.label :product_image, "商品画像" %>
+			<%= f.attachment_field :product_image %>
+		</div>
+		<br>
+		<%= f.hidden_field :shop_id , value: @shops.id %>
+		<%= f.hidden_field :producer_id, value: current_producer.id %>
+		<%= f.submit "送信する" %>
+	<% end %>

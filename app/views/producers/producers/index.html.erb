@@ -1,4 +1,6 @@
-<h1>Producers::Producers#index</h1>
+
+
+<h1><%= current_producer.email %>さんのマイページ</h1>
 <%= link_to "ログアウト", destroy_producer_session_path, method: :delete %>
 <br>
 <%= link_to "ショップ登録を行う", new_producers_shop_path(current_producer) %>
@@ -7,6 +9,6 @@
 <%= link_to "商品登録を行う", new_producers_product_path(current_producer) %>
 <br>
 <br>
-<%= link_to "ショップ一覧", producers_shops_path(current_producer.shops) %>
+<%= link_to "ショップ一覧", shops_producers_producer_path(current_producer) %>
 <br>
-<%= link_to "商品一覧", producers_product_path(current_producer.products) %>
+<%= link_to "商品一覧", products_producers_producer_path(current_producer) %>

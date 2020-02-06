@@ -1,9 +1,8 @@
-
 <%= render 'producers/producers/header' %>
 <h1>商品一覧</h1>
 
 <h2><%= current_producer.email %>の商品一覧</h2>
-<% @shop.products.each do |p| %>
+<% current_producer.products.each do |p| %>
 <table>
 	<thead>
 		<tr>

@@ -1,1 +1,20 @@
-<h1>shop show</h1>
+<%= render 'producers/producers/header' %>
+<h1><%= @shop.shop_name %>の詳細ページ</h1>
+
+	<%= attachment_image_tag @shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
+<br>
+	<p>店舗紹介: <%= @shop.shop_text %>
+<br>
+    <% @place = Shop.new %>
+    <% @place.prefecture_code = @shop.prefecture_code %>
+	<p>店舗所在 :<%= @place.prefecture.name %> <%= @shop.address_city %> <%= @shop.address_street %> <%= @shop.address_building %>
+
+	<p>営業時間 :<%= @shop.open %>時〜<%= @shop.close %>時</p>
+	<p>定休日 :<%= @shop.regular_holiday %>
+
+	<p>最寄り駅: <%= @shop.station %></p>
+
+	<p><%= @shop.station %>から徒歩で 約: <%= @shop.minutes_on_foot %>分</p>
+
+	<p><%= @shop.station %>から車で 約: <%= @shop.minutes_on_car %>分</p>
+	<p>電話番号: <%= @shop.phone_number %></p>

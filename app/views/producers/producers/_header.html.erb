@@ -1,0 +1,20 @@
+<header>
+	<% if producer_signed_in? %>
+      <nav>
+        <ul class="main-nav">
+          <li><%= link_to "logout", destroy_producer_session_path, method: :delete %></li>
+          <li><%= link_to "マイページ", producers_producer_path(current_producer) %></li>
+          <li><%= current_producer.email %><br></li>さん、こんにちは
+        </ul>
+      </nav>
+
+      <!-- ログインしていない状態 -->
+    <% else %>
+      <nav>
+        <ul class="main-nav">
+          <li><%= link_to "login", new_producer_session_path  %></li>
+          <li><%= link_to "sign up",  new_producer_registration_path %></li>
+        </ul>
+      </nav>
+    <% end %>
+</header>
