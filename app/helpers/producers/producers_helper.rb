@@ -1,0 +1,2 @@
+module Producers::ProducersHelper
+end

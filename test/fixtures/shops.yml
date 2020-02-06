@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  producer_id: 1
+  shop_name: MyString
+  shop_text: MyText
+  postcode: 1
+  prefecture_code: 1
+  address_city: MyString
+  address_street: MyString
+  address_building: MyString
+  open: 1
+  close: 1
+  station: MyString
+  minutes_on_foot: 1
+  minutes_on_car: 1
+  shop_image_id: MyString
+
+two:
+  producer_id: 1
+  shop_name: MyString
+  shop_text: MyText
+  postcode: 1
+  prefecture_code: 1
+  address_city: MyString
+  address_street: MyString
+  address_building: MyString
+  open: 1
+  close: 1
+  station: MyString
+  minutes_on_foot: 1
+  minutes_on_car: 1
+  shop_image_id: MyString

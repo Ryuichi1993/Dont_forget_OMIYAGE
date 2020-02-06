@@ -1,0 +1,8 @@
+<h1>TOP</h1>
+<%= link_to "ログイン", new_end_user_session_path %>
+<%= link_to "新規登録", new_end_user_registration_path %>
+<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+
+<br>
+<%= link_to "producer ログイン", new_producer_session_path %>
+<%= link_to "admin ログイン", new_admin_session_path %>

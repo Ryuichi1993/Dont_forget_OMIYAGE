@@ -1,0 +1,2 @@
+module Producers::ProductsHelper
+end

@@ -1,0 +1,102 @@
+<h1>SHOP編集</h1>
+
+	<%= form_for(@shop, url: producers_shop_path(@shop), method: :patch) do |f| %>
+	<div class="field">
+		<%= f.label :shop_name, "SHOP名" %>
+		<%= f.text_field :shop_name %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :shop_text, "SHOP紹介" %>
+		<%= f.text_field :shop_text %>
+	</div>
+	<br>
+
+	<div class="field">
+	<h3>SHOP 住所</h3>
+  		<%= f.label :postcode, "郵便番号" %>
+  		<%= f.text_field :postcode %>
+    </div>
+    <br>
+
+	<div class="field">
+    	<%= f.label :prefecuture, "都道府県" %>
+  		<%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, options = {:selected => @shop.prefecture_code} %>
+    </div>
+    <br>
+
+	<div class="field">
+  		<%= f.label :address_city, "市町村" %>
+  		<%= f.text_field :address_city %>
+	</div>
+	<br>
+
+	<div class="field">
+  		<%= f.label :address_street, "番地" %>
+  		<%= f.text_field :address_street %>
+	</div>
+	<br>
+
+	<div class="field">
+  		<%= f.label :address_building, "建物名" %>
+  		<%= f.text_field :address_building %>
+    </div>
+  	<br>
+
+	<div class="field">
+	<h3>営業時間 (例:10時~21時)</h3>
+		<%= f.label :open, "OPEN" %>
+		<%= f.text_field :open %>
+	</div>
+
+	<div class="field">
+		<%= f.label :close, "CLOSE" %>
+		<%= f.text_field :close %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :station, "最寄り駅" %>
+		<%= f.text_field :station %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :minutes_on_foot, "最寄り駅から徒歩の場合 :約" %>
+		<%= f.text_field :minutes_on_foot %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :minutes_on_car, "最寄り駅から車の場合 :約" %>
+		<%= f.text_field :minutes_on_car %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :shop_image, "SHOP画像" %>
+		<%= f.attachment_field :shop_image %>
+	</div>
+	<br>
+
+	<%= f.submit '更新する' %>
+	<% end %>
+
+
+
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+<script type="text/javascript"></script>
+<script>
+
+ $("#shop_postcode").jpostal({
+    postcode : [ "#shop_postcode" ],
+    address  : {
+                  "#shop_prefecture_code" : '%3',
+                  "#shop_address_city"            : '%4',
+                  "#shop_address_street"          : '%5%6%7'
+                }
+})
+
+</script>
+

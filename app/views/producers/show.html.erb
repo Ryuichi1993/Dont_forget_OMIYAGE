@@ -1,0 +1,20 @@
+<h1>shop一覧</h1>
+
+<h2><%= current_producer.email %>のショップ一覧</h2>
+
+	<table>
+		<thead>
+			<tr>
+				<th>店名</th>
+			</tr>
+		</thead>
+		<% current_producer.shops.each do |shop| %>
+		<tbody>
+			<tr>
+				<td><%= shop.shop_name %></td>
+				<td><%= link_to "編集", edit_producers_shop(@shop) %>
+				<td><%= link_to "削除", producers_shop_path(@shop), method: :delete %>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>
