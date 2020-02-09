@@ -13,3 +13,8 @@
 	<%= link_to "ショップ一覧", shops_producers_producer_path(current_producer) %>
 <br>
 	<%= link_to "商品一覧", products_producers_producer_path(current_producer) %>
+<br>
+
+<%= link_to "ユーザー情報を編集する", edit_producer_registration_path(current_producer) %>
+<br>
+<%= link_to '退会する方はこちらから', withdraw_producers_producer_path(current_producer) %>

@@ -1,0 +1,50 @@
+<h1><%= @product.product_name %>の詳細ページ</h1>
+
+<%= attachment_image_tag @product, :product_image, :fill, 400, 200, fallback: "no_image.jpg", size: '400x200' %>
+<br>
+
+商品価格:<%= @product.product_price %>円
+<br>
+商品説明:<%= @product.product_text %>
+
+<p>販売店舗</p>
+店舗名:<%= @shop.shop_name %>
+<br>
+<%= attachment_image_tag @shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", siza: '200x200' %>
+<br>
+ショップ説明:<%= @shop.shop_text %>
+
+
+
+
+
+
+<h2>コメント投稿</h2>
+<%= form_with(model: [@product,@comment], url: end_users_product_comments_path(product_id: @product.id)) do |f| %>
+<% if @comment.errors.any? %>
+<div class="alert alert-danger" role="alert">
+	<p class="error-count"><%= @comment.errors.full_messages.count %>errors prohibited this @comment from being saved:</p>
+	<ul>
+		<% @comment.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<%= f.label :comment, "Comment" %>
+<div id="text1"><%= f.text_field :comment, size: "100x10", class: "form-control" %></div>
+<%= f.submit 'コメントする' %>
+<% end %>
+
+
+<h2>コメント一覧</h2>
+<% @product.product_comments.each do |p| %>
+<table>
+	<tr>
+		<td><%= p.end_user.email %></td>
+		<td><%= p.comment %></td>
+		<% if p.end_user == current_end_user %>
+		<td><%= link_to "コメントを消去する", end_users_product_comments_path(product_id: @product.id), method: :delete, date: {confirm:'Are you sure?'}, remote: true %>
+		</td>
+		<% end %>
+		<% end %>

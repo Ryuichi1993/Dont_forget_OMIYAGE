@@ -5,15 +5,20 @@ class ProducersController < ApplicationController
 
   def show
 
-  	end
   end
+
   def shops
 
   end
-  def products
 
+  def products
+   @shops = current_producer.shops
   end
 
   def edit
   end
+
+
+
+
 end

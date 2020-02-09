@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 			producers_producer_path(current_producer)
 		when EndUser
 			flash[:notice] = "Signed in successfully."
-			end_users_path
+			end_users_end_user_path(current_end_user)
 		end
 	end
 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 			producers_producer_path(current_producer)
 		when EndUser
 			flash[:notice] = "Signed in successfully."
-			end_users_path
+			end_users_end_users_path(current_end_user)
 		end
 	end
 

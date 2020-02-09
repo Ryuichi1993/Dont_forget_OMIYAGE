@@ -1,0 +1,21 @@
+<h1>マイページ</h1>
+<%= link_to "商品一覧へ", end_users_products_path %>
+<%= link_to "店舗一覧へ", end_users_shops_path %>
+
+<% @product.each do |p| %>
+<table>
+	<thead>
+		<tr>
+			<th><%= link_to end_users_product_path(p) do %>
+				<%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %></th>
+		</tr>
+	<tbody>
+		<tr>
+			<td>
+				<%= p.product_name %>
+				<%= p.product_price %>円
+			</td>
+		</tr>
+	</tbody>
+</thead>
+<% end %>

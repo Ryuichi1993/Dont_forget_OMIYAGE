@@ -4,4 +4,12 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many   :product_comments
+  has_many   :favorites
+
+  attachment :shop_image
+  attachment :product_image
+
+
+
 end

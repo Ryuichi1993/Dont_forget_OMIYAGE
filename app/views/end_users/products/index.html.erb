@@ -1,0 +1,18 @@
+<h1>商品一覧</h1>
+
+<% @product.zip(@shop).each do |p,s| %>
+<table>
+	<thead>
+		<tr>
+			<th><%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
+		</tr>
+	<tbody>
+		<tr>
+			<td>商品名:<%= p.product_name %></td>
+			<td>価格:<%= p.product_price %>円</td>
+			<td>ショップ名:<%= s.shop_name %></td>
+			<td>商品紹介:<%= p.product_text %></td>
+		</tr>
+	</tbody>
+</thead>
+<% end %>

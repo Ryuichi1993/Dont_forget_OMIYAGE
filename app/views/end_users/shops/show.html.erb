@@ -1,6 +1,4 @@
-<%= render 'producers/producers/header' %>
-<h1><%= @shop.shop_name %>の詳細ページ</h1>
-
+<h1><%= @shop.shop_name %>の詳細</h1>
 
 	<%= attachment_image_tag @shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
 <br>
@@ -19,3 +17,4 @@
 
 	<p><%= @shop.station %>から車で 約: <%= @shop.minutes_on_car %>分</p>
 	<p>電話番号: <%= @shop.phone_number %></p>
+

@@ -21,7 +21,7 @@ class Producers::ShopsController < ApplicationController
   def create
   	@shop = Shop.new(shop_params)
   	@shop.producer_id = current_producer.id
-  	if @shop.save
+  	if @shop.save!
   		flash[:notice] = "保存に成功しました"
   		redirect_to producers_producers_path
   	else
