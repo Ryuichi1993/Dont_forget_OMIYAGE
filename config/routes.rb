@@ -25,14 +25,19 @@ devise_for :producers, controllers: {
 
 namespace    :end_users do
   resources  :products do
-    get 'show', on: :member
+  resource   :favorites, only: [:create, :destroy] do
+  get 'okiniiri', on: :collection
+  end
+  get 'okiniiri', to: 'favorites#okiniiri'
+  resource   :product_comments,only: [:create, :destroy]
   end
   resources  :shops
-  resources  :end_users
-  resource   :product_comments,only: [:create, :destroy]
-  resource   :favorites,only: [:create, :destroy]
-
+  resources  :end_users do
+  get 'withdraw', on: :member
+  end
+  get 'withdraw', to: 'end_users#withdraw'
 end
+
 
 namespace :producers do
  resources :producers do

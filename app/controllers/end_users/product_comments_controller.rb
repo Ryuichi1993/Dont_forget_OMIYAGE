@@ -5,7 +5,6 @@ def create
 	@comment = ProductComment.new(product_comment_params)
 	@comment.end_user_id = current_end_user.id
 	@comment.product_id = @product.id
-	binding.pry
 	if @comment.save
     else
     	@product = Product.find(params[:product_id])

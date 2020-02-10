@@ -50,7 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'dotenv-rails'
+
 end
 
 group :test do
@@ -82,3 +82,4 @@ gem 'kaminari', '~> 0.17.0'
 group :production do
   gem 'mysql2'
 end
+  gem 'dotenv-rails'

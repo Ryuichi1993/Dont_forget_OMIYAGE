@@ -1,5 +1,5 @@
 class Shop < ApplicationRecord
-  has_many :products
+  has_many :products, dependent: :destroy
   belongs_to :producer
 
   attachment :shop_image

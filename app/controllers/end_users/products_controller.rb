@@ -6,7 +6,6 @@ class EndUsers::ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-  	@shop = Shop.find(params[:id])
   	@comment = ProductComment.new
 
   end

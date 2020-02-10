@@ -1,0 +1,12 @@
+<% if product.favorite_end_user(current_end_user) %>
+	<%= link_to end_users_product_favorites_path(product), method: :delete, remote: true  do %>
+		<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+		<%= product.favorites.count %>
+<% end %>
+
+<% else %>
+	<%= link_to end_users_product_favorites_path(product), method: :post, remote: true do %>
+		<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+		<%= product.favorites.count %>
+	<% end %>
+<% end %>

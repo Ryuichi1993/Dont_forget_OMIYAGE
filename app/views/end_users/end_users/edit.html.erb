@@ -1,1 +1,30 @@
-<h1>end_user edit</h1>
+<h1><%= current_end_user.name %>の会員編集ページ</h1>
+
+<%= form_for @end_user, url: end_users_end_user_path, method: :patch do |f| %>
+	<% if @end_user.errors.any? %>
+	<div class="alert-alert-warinig">
+		<p class="error-count"><%= @end_user.errors.full_messages.count %>errors prohibited this end_user from being saved:</p>
+		<ul>
+			<% @end_user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+
+    <% end %>
+    <div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+    	<%= f.label :profile_image %>
+		<%= f.attachment_field :profile_image %>
+	</div>
+	<div class="field">
+		<%= f.label :introduction %>
+		<%= f.text_area :introduction %>
+	</div>
+	<div class="field">
+		<%= f.submit 'Update User' %>
+	</div>
+<% end %>

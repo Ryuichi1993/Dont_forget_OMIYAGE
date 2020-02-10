@@ -1,6 +1,11 @@
 <h1>マイページ</h1>
 <%= link_to "商品一覧へ", end_users_products_path %>
 <%= link_to "店舗一覧へ", end_users_shops_path %>
+<%= link_to edit_end_users_end_user_path(current_end_user) do %>
+	<%= current_end_user.name %>さんの会員情報編集ページ
+<%= link_to "退化される方はこちらをクリック", withdraw_end_users_end_user_path(current_end_user) %>
+<%= link_to "お気に入り商品", okiniiri_end_users_product_favorites_path(current_end_user) %>
+<% end %>
 
 <% @product.each do |p| %>
 <table>

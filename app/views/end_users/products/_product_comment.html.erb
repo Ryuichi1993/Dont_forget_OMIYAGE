@@ -1,0 +1,13 @@
+
+<% product.product_comments.each do |p| %>
+<table>
+	<tr>
+		<td><%= p.end_user.name %></td>
+		<td><%= p.comment %></td>
+		<% if p.end_user == current_end_user %>
+		<td><%= link_to "コメントを消去する", end_users_product_product_comments_path(product_id: product.id), method: :delete, date: {confirm:'Are you sure?'}, remote: true %>
+		</td>
+	</tr>
+</table>
+		<% end %>
+		<% end %>
