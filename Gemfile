@@ -78,8 +78,5 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'paranoia'
 gem 'kaminari', '~> 0.17.0'
-
-group :production do
-  gem 'mysql2'
-end
-  gem 'dotenv-rails'
+gem 'mysql2'
+gem 'dotenv-rails'
