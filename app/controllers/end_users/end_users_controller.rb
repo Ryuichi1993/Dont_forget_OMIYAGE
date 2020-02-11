@@ -20,15 +20,15 @@ class EndUsers::EndUsersController < ApplicationController
   end
 
   def withdraw
-
+    @end_user = current_end_user
   end
-  
+
   def create
 
   end
 
   def destroy
-    @end_user = Enduser.find(params[:id])
+    @end_user = current_end_user
     if @end_user.destroy
       redirect_to top_index_path
     else

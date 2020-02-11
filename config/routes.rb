@@ -41,12 +41,12 @@ end
 
 namespace :producers do
  resources :producers do
- 	get 'shops',    on: :member
+  get 'shops',    on: :member
   get 'products', on: :member
   get 'search',   on: :collection
   get 'withdraw', on: :member
  end
- 	get 'shops',    to: 'producers#shops'
+  get 'producers/shops',    to: 'producers#shops'
   get 'products', to: 'producers#products'
   get 'search',   to: 'producers#search'
   get 'withdraw', to: 'producers#withdraw'
