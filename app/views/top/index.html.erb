@@ -1,8 +1,11 @@
-<h1>TOP</h1>
-<%= link_to "ログイン", new_end_user_session_path %>
-<%= link_to "新規登録", new_end_user_registration_path %>
-<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+<div class= "container a">
+	<h1 class= "title">Dont Forget OMIYAGE</h1>
+		<div class="link">
+			<%= link_to "ログイン", new_end_user_session_path %>
+			<%= link_to "サインアップ", new_end_user_registration_path %>
+			<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+			<%= link_to "producer ログイン", new_producer_session_path %>
+			<%= link_to "admin ログイン", new_admin_session_path %>
+		</div>
+</div>
 
-<br>
-<%= link_to "producer ログイン", new_producer_session_path %>
-<%= link_to "admin ログイン", new_admin_session_path %>

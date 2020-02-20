@@ -1,0 +1,17 @@
+<h1><%= @producer.name %>さんの詳細ページ</h1>
+
+<p>店舗管理者ID</p>
+	<%= @producer.id %>
+<p>店舗管理者ステータス</p>
+	<% case @producer.deleted? when false %>
+	有効会員
+	<% when true %>
+	退会済
+	<% end %>
+<p>店舗管理者ネーム</p>
+	<%= @producer.name %>
+<p>店舗管理者email</p>
+	<%= @producer.email %>
+<%= link_to "店舗一覧を見る", admins_shops_path %>
+<%= link_to "編集する", edit_admins_end_user_path(@producer) %>
+

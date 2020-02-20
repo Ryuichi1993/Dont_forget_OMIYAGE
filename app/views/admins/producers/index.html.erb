@@ -1,0 +1,27 @@
+<h1>Admins::Producers#ind</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>ユーザー名</th>
+			<th>作成日</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+	</thead>
+	<% @producer.each do |p| %>
+	<tbody>
+		<tr>
+			<td><%= link_to admins_producer_path(p) do %>
+				<%= p.name %><% end %></td>
+			<td><%= p.created_at %></td>
+			<td><%= p.email %></td>
+			<% case p.deleted? when false %>
+			<td>有効</td>
+			<% when true %>
+			<td>退会済</td>
+			<% end %>
+		</tr>
+	</tbody>
+<% end %>
+</table>
+

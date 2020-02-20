@@ -1,0 +1,36 @@
+<%= render 'end_users/end_users/end_user_header' %>
+<h1>予約情報入力ページ</h1>
+<%= form_for(@reservation, url: end_users_reservations_path) do |f| %>
+<h3>予定日</h3>
+<%= f.text_field :start_date, value: "", class: "datetimepicker1", autocomplete: "off" %>
+<h3>終了日</h3>
+<%= f.text_field :end_date, value: "", class: "datetimepicker2", autocomplete: "off" %>
+
+<%= f.submit "この日程で予約する" %>
+<% end %>
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-datetimepicker@2.5.20/build/jquery.datetimepicker.full.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-datetimepicker@2.5.20/jquery.datetimepicker.css">
+
+<script type="text/javascript">
+
+$(function () {
+  $(".datetimepicker1").datetimepicker();
+});
+
+$(function () {
+  $(".datetimepicker2").datetimepicker();
+});
+
+</script>
+

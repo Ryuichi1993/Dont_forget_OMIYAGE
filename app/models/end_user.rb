@@ -6,9 +6,10 @@ class EndUser < ApplicationRecord
 
   has_many   :product_comments, dependent: :destroy
   has_many   :favorites, dependent: :destroy
+  has_many   :memories, dependent: :destroy
+  has_many   :reservations, dependent: :destroy
 
   attachment :profile_image
 
   acts_as_paranoid
-
 end

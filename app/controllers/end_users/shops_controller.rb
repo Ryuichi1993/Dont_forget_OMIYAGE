@@ -5,6 +5,8 @@ class EndUsers::ShopsController < ApplicationController
 
   def show
   	@shop = Shop.find(params[:id])
+  	gon.shop = @shop.latitude
+  	gon.shops = @shop.longitude
   end
 
 

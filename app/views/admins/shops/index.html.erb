@@ -1,0 +1,22 @@
+<h1><%= @producer.name %>さんの店舗一覧</h1>
+
+	<% @shop.each do |s| %>
+	<table>
+		<thead>
+			<tr>
+				<th><%= attachment_image_tag s, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td><h4>店舗名</h4></td>
+				<td><%= link_to admins_shop_path(s) do %>
+					<%= s.shop_name %><% end %></td>
+				<td><%= link_to "商品一覧を見る", admins_products_path %></td>
+				<td><%= link_to "編集",  edit_admins_shop_path(s) %>
+				<td><%= link_to "削除", admins_shop_path(s), method: :delete %>
+			</tr>
+		</tbody>
+	</table>
+	<% end %>
+
+

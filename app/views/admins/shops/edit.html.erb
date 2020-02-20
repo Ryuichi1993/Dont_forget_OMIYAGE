@@ -1,0 +1,117 @@
+<h1>SHOP編集</h1>
+
+	<%= form_for(@shop, url: admins_shop_path(@shop), method: :patch) do |f| %>
+	<div class="field">
+		<%= f.label :shop_name, "SHOP名" %>
+		<%= f.text_field :shop_name %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :shop_text, "SHOP紹介" %>
+		<%= f.text_field :shop_text %>
+	</div>
+	<br>
+
+	<div class="field">
+	<p>SHOP 住所</p>
+
+  		<%= f.label :postcode, "郵便番号" %>
+  		<%= f.text_field :postcode %>
+    </div>
+    <br>
+
+	<div class="field">
+    	<%= f.label :prefecuture, "都道府県" %>
+  		<%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, options = {:selected => @shop.prefecture_code} %>
+    </div>
+    <br>
+
+	<div class="field">
+  		<%= f.label :address_city, "市町村" %>
+  		<%= f.text_field :address_city %>
+	</div>
+	<br>
+
+	<p>※番地まで記入をお願いします　例: 4丁目-5-1など</p>
+	<div class="field">
+  		<%= f.label :address_street, "番地" %>
+  		<%= f.text_field :address_street %>
+	</div>
+	<br>
+
+	<div class="field">
+  		<%= f.label :address_building, "建物名" %>
+  		<%= f.text_field :address_building %>
+    </div>
+  	<br>
+
+	<p>※記入例: 水・金曜日</p>
+  	<div class="field">
+  		<%= f.label :regular_holiday, "定休日" %>
+  		<%= f.text_field :regular_holiday %>
+	</div>
+	<br>
+
+	<div class="field">
+	<p>営業時間</p>
+		<%= f.label :open, "OPEN" %>
+		<%= f.text_field :open %>時
+	</div>
+
+	<div class="field">
+		<%= f.label :close, "CLOSE" %>
+		<%= f.text_field :close %>時
+	</div>
+	<br>
+
+	<p>※記入例 :123-4567-890</p>
+	<div class="field">
+		<%= f.label :phone_number, "店舗電話番号" %>
+		<%= f.text_field :phone_number %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :station, "最寄り駅" %>
+		<%= f.text_field :station %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :minutes_on_foot, "最寄り駅から徒歩の場合 :約" %>
+		<%= f.text_field :minutes_on_foot %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :minutes_on_car, "最寄り駅から車の場合 :約" %>
+		<%= f.text_field :minutes_on_car %>
+	</div>
+	<br>
+
+	<div class="field">
+		<%= f.label :shop_image, "SHOP画像" %>
+		<%= f.attachment_field :shop_image %>
+	</div>
+	<br>
+
+	<%= f.submit '更新する' %>
+	<% end %>
+
+
+
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+<script type="text/javascript"></script>
+<script>
+
+ $("#shop_postcode").jpostal({
+    postcode : [ "#shop_postcode" ],
+    address  : {
+                  "#shop_prefecture_code" : '%3',
+                  "#shop_address_city"            : '%4',
+                  "#shop_address_street"          : '%5%6%7'
+                }
+})
+
+</script>

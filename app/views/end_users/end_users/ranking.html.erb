@@ -1,0 +1,24 @@
+<%= render 'end_users/end_users/end_user_header' %>
+<h1>ranking</h1>
+
+<strong>閲覧数ランキング</strong>
+<% @ranking_view.each.with_index(1) do |rank, i| %>
+<table>
+	<h4>第<%= i %>位 <%= rank.impressions_counts(current_end_user)  %> view</h4>
+
+	<thead>
+		<tr>
+			<th><%= link_to end_users_product_path(rank) do %>
+				<%= attachment_image_tag rank, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>商品名:<%= rank.product_name %></td>
+			<td>価格:<%= rank.product_price %>円</td>
+			<td>ショップ名:<%= rank.shop.shop_name %></td>
+			<td>商品紹介:<%= rank.product_text %></td>
+		</tr>
+	</tbody>
+</table>
+<% end %>

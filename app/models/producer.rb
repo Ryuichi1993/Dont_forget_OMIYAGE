@@ -7,4 +7,6 @@ class Producer < ApplicationRecord
   has_many :shops, dependent: :destroy
   has_many :products, dependent: :destroy
 
+  acts_as_paranoid
+
 end

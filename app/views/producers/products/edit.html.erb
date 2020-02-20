@@ -36,7 +36,6 @@
 			<%= f.attachment_field :product_image %>
 		</div>
 		<br>
-		<%= f.hidden_field :shop_id , value: @shops.id %>
-		<%= f.hidden_field :producer_id, value: current_producer.id %>
+
 		<%= f.submit "送信する" %>
 	<% end %>

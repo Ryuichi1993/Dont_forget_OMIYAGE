@@ -40,7 +40,12 @@
 			<%= f.attachment_field :product_image %>
 		</div>
 		<br>
-		
+
+		<div class="field">
+			<%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+		</div>
+
+
 		<%= f.hidden_field :producer_id, value: current_producer.id %>
 		<%= f.submit "送信する" %>
 	<% end %>

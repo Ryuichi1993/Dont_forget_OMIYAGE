@@ -14,7 +14,7 @@
 			<tr>
 				<td><%= shop.shop_name %></td>
 				<th><%= attachment_image_tag shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
-				<th><%= link_to "詳細を見る", shops_producers_producer_path(shop) %>
+				<th><%= link_to "詳細を見る", producers_shop_path(shop) %>
 				<td><%= link_to "編集", edit_producers_shop_path(shop) %>
 				<td><%= link_to "削除", producers_shop_path(shop), method: :delete %>
 			</tr>

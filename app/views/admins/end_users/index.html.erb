@@ -1,0 +1,28 @@
+<h1>Admin end_user 一覧</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>ユーザー名</th>
+			<th>作成日</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+	<% @end_user.each do |e| %>
+	<tbody>
+		<tr>
+			<td><%= link_to admins_end_user_path(e) do %>
+				<%= e.name %><% end %></td>
+			<td><%= e.created_at %></td>
+			<td><%= e.email %></td>
+			<% case e.deleted? when false %>
+			<td>有効</td>
+			<% when true %>
+			<td>退会済</td>
+			<% end %>
+			<td><%= link_to "編集", edit_admins_end_user_path(e) %></td>
+		</tr>
+	</tbody>
+<% end %>
+</table>

@@ -1,19 +1,16 @@
 class Producers::ProductsController < ApplicationController
-	before_action :set_shops, only: [:new, :create]
   def index
-  	@producer = current_producer
-  	@producer.shops.each do |pr|
-  		@shop = pr
-  	end
+    @product = current_producer.products.all
+    @shop = current_producer.shops.all
   end
 
-  def show
+  def ichiran
+    @product = Product.find(params[:id])
   end
 
   def edit
   	@product = Product.find(params[:id])
   	@shop = current_producer.shops
-  	@shops = Shop.find(params[:id])
   end
 
   def new
@@ -26,9 +23,9 @@ class Producers::ProductsController < ApplicationController
   	@product = Product.new(product_params)
   	@producer = current_producer
   	@shop = @producer.shops
-  	if @product.save
+    if @product.save
   		flash[:notice] = "保存に成功しました"
-  		redirect_to producers_producers_path
+  		redirect_to producers_producer_path(current_producer)
   	else
   		render :new
   	end
@@ -38,7 +35,7 @@ class Producers::ProductsController < ApplicationController
   	@product = Product.find(params[:id])
   	if @product.destroy
   		flash[:notice] = "削除に成功しました"
-  		redirect_to producers_producers_path
+  		redirect_to producers_producer_path(current_producer)
   	else
   		render :show
   	end
@@ -48,18 +45,17 @@ class Producers::ProductsController < ApplicationController
   	@product = Product.find(params[:id])
   	if @product.update(product_params)
   		flash[:notice] = "編集に成功しました"
-  		redirect_to producers_products_path(current_producer)
+  		redirect_to producers_products_path
   	else
   		render :edit
   	end
   end
 
+
   private
   def product_params
-  	params.require(:product).permit(:product_name, :product_text, :product_price, :product_image, :shop_id, :producer_id)
+  	params.require(:product).permit( :product_name, :product_text, :product_price,
+     :product_image, :shop_id, :producer_id, category_ids:[])
   end
 
-  def set_shops
-  	@shops = Shop.all
-  end
 end

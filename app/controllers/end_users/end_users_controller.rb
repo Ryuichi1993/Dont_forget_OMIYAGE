@@ -1,13 +1,22 @@
 class EndUsers::EndUsersController < ApplicationController
-
+  before_action :authenticate_end_user!
+  before_action :correct_end_user,   only: [:edit, :update, :destroy]
   def index
-
   end
 
   def show
-    @product = Product.all
-    @place = Shop.new
+    @category = Category.all
+    @ranking = Product.ranking
+    @view = Product.view
 
+  end
+
+  def ranking
+    @ranking_view = Product.ranking_view
+  end
+
+  def iine_ranking
+    @ranking = Product.ranking
   end
 
   def product
@@ -24,8 +33,13 @@ class EndUsers::EndUsersController < ApplicationController
   end
 
   def create
-
-  end
+    if @end_user.save
+      NotificationMailer.send_confirm_to_user(@end_user).deliver
+      redirect_to @end_user
+    else
+      render 'new'
+    end
+end
 
   def destroy
     @end_user = current_end_user
@@ -48,6 +62,13 @@ class EndUsers::EndUsersController < ApplicationController
 
   private
   def end_user_params
-    params.require(:end_user).permit(:name, :introduction, :profile_image)
+    params.require(:end_user).permit(:name, :introduction, :profile_image, :deleted_at)
+  end
+
+  def correct_end_user
+    @end_user = EndUser.find(params[:id])
+    unless @end_user == current_end_user
+    redirect_to end_users_end_user_path(current_user.id)
+    end
   end
 end

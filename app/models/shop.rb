@@ -1,8 +1,28 @@
 class Shop < ApplicationRecord
   has_many :products, dependent: :destroy
+  has_many :product_categories, dependent: :destroy
   belongs_to :producer
 
   attachment :shop_image
+
+  geocoded_by :address_city
+  after_validation :geocode, if: :address_city_changed?
+
+  with_options presence: true do
+  validates :shop_name
+  validates :shop_text
+  validates :post_code
+  validates :prefecture_code
+  validates :address_city
+  validates :address_street
+  validates :open
+  validates :close
+  validates :station
+  validates :minutes_on_foot
+  validates :minutes_on_car
+  validates :regular_holiday
+  validates :phone_number
+end
 
   include JpPrefecture
   jp_prefecture :prefecture_code

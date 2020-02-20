@@ -1,20 +1,19 @@
 <%= render 'producers/producers/header' %>
-<h1>商品一覧</h1>
+<h1><%= @product.product_name %>の詳細ページ</h1>
 
-<h2><%= current_producer.email %>の商品一覧</h2>
-<% @shop.products.each do |p| %>
 <table>
 	<thead>
 		<tr>
-			<th><%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
+			<th><%= attachment_image_tag @prouduct, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td><%= p.product_name %></td>
-			<td><%= link_to "編集", edit_producers_product_path(p) %></td>
-			<td><%= link_to "削除", producers_product_path(p), method: :delete %></td>
+			<td>商品名:<%= @product.product_name %></td>
+			<td>商品価格:<%= @product.product_price %></td>
 		</tr>
 	</tbody>
 </table>
-<% end %>
+			商品説明<%= @product.product_text %>
+			<%= link_to "編集", edit_admins_product_path(@product) %>
+			<%= link_to "削除", admins_product_path(@product), method: :delete %>

@@ -1,0 +1,22 @@
+<h1><%= @end_user.name %>さんの詳細ページ</h1>
+
+<p>顧客ID</p>
+	<%= @end_user.id %>
+<p>顧客ステータス</p>
+	<% case @end_user.deleted? when false %>
+	有効会員
+	<% when true %>
+	退会済
+	<% end %>
+<p>顧客ネーム</p>
+	<%= @end_user.name %>
+<p>顧客email</p>
+	<%= @end_user.email %>
+<p>顧客画像</p>
+	<%= attachment_image_tag @end_user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
+<p>顧客紹介文</p>
+	<%= @end_user.introduction %>
+<%= link_to "編集する", edit_admins_end_user_path(@end_user) %>
+
+
+

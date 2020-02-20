@@ -2,9 +2,9 @@
 <%= render 'producers/producers/header' %>
 <h1>商品一覧</h1>
 
-<h2><%= current_producer.email %>の商品一覧</h2>
-<% @shop.products.each do |p| %>
-<table>
+
+<% @product.each do |p| %>
+ <table>
 	<thead>
 		<tr>
 			<th><%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
@@ -12,7 +12,8 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><%= p.product_name %></td>
+			<td><%= link_to ichiran_producers_product_path(p) do %>
+				<%= p.product_name %><% end %></td>
 			<td><%= link_to "編集", edit_producers_product_path(p) %></td>
 			<td><%= link_to "削除", producers_product_path(p), method: :delete %></td>
 		</tr>

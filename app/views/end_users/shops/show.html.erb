@@ -1,3 +1,4 @@
+<%= render 'end_users/end_users/end_user_header' %>
 <h1><%= @shop.shop_name %>の詳細</h1>
 
 	<%= attachment_image_tag @shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
@@ -16,5 +17,32 @@
 	<p><%= @shop.station %>から徒歩で 約: <%= @shop.minutes_on_foot %>分</p>
 
 	<p><%= @shop.station %>から車で 約: <%= @shop.minutes_on_car %>分</p>
+
 	<p>電話番号: <%= @shop.phone_number %></p>
+
+
+
+
+ <div id="map"></div>
+    <style>
+        #map {
+        height: 500px;
+        width: 70%;
+      }
+    </style>
+    <script>
+      function initMap() {
+        var uluru = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV["GOOGLE_MAP_API_KEY"]%>&callback=initMap"
+    async defer></script>
 

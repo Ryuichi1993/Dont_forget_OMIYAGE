@@ -1,0 +1,17 @@
+<h1><%= @shop.shop_name %>の商品一覧</h1>
+<% @product.each do |p| %>
+<table>
+	<thead>
+		<tr>
+			<th><%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= link_to admins_product_path(p) do %>
+				<%= p.product_name %><% end %></td>
+		</tr>
+	</tbody>
+</table>
+<% end %>
+

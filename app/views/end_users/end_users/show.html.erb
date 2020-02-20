@@ -1,28 +1,52 @@
-<h1>マイページ</h1>
-<%= link_to "商品一覧へ", end_users_products_path %>
-<%= link_to "店舗一覧へ", end_users_shops_path %>
-<%= link_to edit_end_users_end_user_path(current_end_user) do %>
-	<%= current_end_user.name %>さんの会員情報編集ページ
-<%= link_to "退会される方はこちらをクリック", withdraw_end_users_end_user_path(current_end_user) %>
-<%= link_to "お気に入り商品", okiniiri_end_users_product_favorites_path(current_end_user) %>
-<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
-<% end %>
+<%= render 'end_users/end_users/end_user_header' %>
 
-<% @product.each do |p| %>
-<table>
-	<thead>
-		<tr>
-			<th><%= link_to end_users_product_path(p) do %>
-				<%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %>
-			</th>
-		</tr>
-	<tbody>
-		<tr>
-			<td>
-				<%= p.product_name %>
-				<%= p.product_price %>円
-			</td>
-		</tr>
-	</tbody>
-</thead>
+<h1>マイページ</h1>
+<% @category.each do |c| %>
+<%= link_to end_users_category_path(c) do %>
+<%= c.name %>
 <% end %>
+<% end %>
+<br>
+<br>
+<strong>いいね数TOP3</strong>
+<div>
+<div class="box1">
+<% @ranking.each.with_index(1) do |rank, i| %>
+<div class="box2">
+	第<%= i %>位 <%= rank.favorites.count %>いいね
+
+			<div><%= link_to end_users_product_path(rank) do %>
+				<%= attachment_image_tag rank, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %></div>
+			<div>商品名:<%= rank.product_name %><br>
+			価格:<%= rank.product_price %>円<br>
+			ショップ名:<%= rank.shop.shop_name %><br>
+			商品紹介:<%= rank.product_text %></div>
+</div>
+<% end %>
+</div>
+</div>
+<div><%= link_to "いいねランキングを見る", iine_ranking_end_users_end_users_path %></div>
+<br>
+
+<strong>閲覧数TOP3</strong>
+<div>
+<div class="box1">
+<% @view.each.with_index(1) do |rank, i| %>
+<div class="box2">
+
+	第<%= i %>位 <%= rank.impressions_counts(current_end_user) %> view
+
+	
+			<div><%= link_to end_users_product_path(rank) do %>
+				<%= attachment_image_tag rank, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %></div>
+			<div>商品名:<%= rank.product_name %>
+			価格:<%= rank.product_price %>円
+			ショップ名:<%= rank.shop.shop_name %>
+			商品紹介:<%= rank.product_text %></div>
+</div>
+<% end %>
+</div>
+</div>
+<div><%= link_to '閲覧数ランキングを見る', ranking_end_users_end_users_path %></div>
+</div>
+
