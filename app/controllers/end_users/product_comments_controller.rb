@@ -6,8 +6,7 @@ def create
 	@comment = ProductComment.new(product_comment_params)
 	@comment.end_user_id = current_end_user.id
 	@comment.product_id = @product.id
-	if @comment.save!
-		binding.pry
+	if @comment.save
     else
     	@product = Product.find(params[:product_id])
     	@shop = Shop.find(params[:shop_id])
@@ -16,18 +15,18 @@ def create
 
 end
 
-def destroy
+ def destroy
 	@product = Product.find(params[:product_id])
-	@comment = current_end_user.product_comments.find_by(product_id: @product.id)
+	@comment = current_end_user.product_comments.find_by(product_id: @product.id, id: params[:comment_id])
 	if @comment.destroy
 	else
 		@product = Product.find(params[:product_id])
 	end
-end
+ end
 
 private
-def product_comment_params
+ def product_comment_params
 	params.require(:product_comment).permit(:end_user_id, :product_id, :comment)
-end
+ end
 
 end

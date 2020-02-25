@@ -1,11 +1,74 @@
+
 <div class= "container a">
 	<h1 class= "title">Dont Forget OMIYAGE</h1>
-		<div class="link">
-			<%= link_to "ログイン", new_end_user_session_path %>
-			<%= link_to "サインアップ", new_end_user_registration_path %>
-			<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
-			<%= link_to "producer ログイン", new_producer_session_path %>
-			<%= link_to "admin ログイン", new_admin_session_path %>
+		<div class="int">
+		大切な人へ送るものだから</div>
+		<div class="link1">
+			<div class="class1"><%= link_to "ログイン", new_end_user_session_path %></div>
+			<div class="class1"><%= link_to "サインアップ", new_end_user_registration_path %></div>
+            <div class="class1"><%= link_to "ショップ登録される方はこちら", new_producer_session_path %></div>
+　　　　　　　<div class="class1"><%= link_to "管理者用", new_admin_session_path %></div>
 		</div>
 </div>
+<style>
+a{
+    color: #337ab7;
+    text-decoration: none;
+ }
+ a:link {
+	color:white;
+}
 
+a:visited {
+	color:white;
+}
+.int{
+	color:white;
+	text-align: center;
+	font-size:40px;
+	margin: 150px auto;
+	font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+	backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width:500px;
+}
+
+.class1{
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white;
+    width:350px;
+    float:left;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+}
+.class1:before, .class1:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: white;
+}
+.class1:before {left: 10px;}
+.class1:after {right: 10px;}
+.class1 p {
+    margin: 0; 
+    padding: 0;
+}
+.link1{
+	text-align: center;
+	height:200px;
+	width:400px;
+	margin:0 auto;
+}
+
+
+
+
+</style>

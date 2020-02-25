@@ -25,7 +25,7 @@ class Producers::ProductsController < ApplicationController
   	@shop = @producer.shops
     if @product.save
   		flash[:notice] = "保存に成功しました"
-  		redirect_to producers_producer_path(current_producer)
+  		redirect_to producers_products_path
   	else
   		render :new
   	end
@@ -35,7 +35,7 @@ class Producers::ProductsController < ApplicationController
   	@product = Product.find(params[:id])
   	if @product.destroy
   		flash[:notice] = "削除に成功しました"
-  		redirect_to producers_producer_path(current_producer)
+  		redirect_to producers_products_path
   	else
   		render :show
   	end

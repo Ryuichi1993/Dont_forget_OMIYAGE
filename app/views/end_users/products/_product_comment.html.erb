@@ -1,13 +1,87 @@
 
-<% product.product_comments.each do |p| %>
-<table>
-	<tr>
-		<td><%= p.end_user.name %></td>
-		<td><%= p.comment %></td>
+<div class="comment">
+	<% product.product_comments.each do |p| %>
+	<div class="comment1">
+		<div class="user_name">ユーザー名:<%= p.end_user.name %>
+		</div>
+			<div class="time"><%= time_ago_in_words(p.created_at) + "前"%>
+			</div>
+	<div class="comment_comment"><%= p.comment %></div>
 		<% if p.end_user == current_end_user %>
-		<td><%= link_to "コメントを消去する", end_users_product_product_comment_path(product_id: product.id), method: :delete, date: {confirm:'Are you sure?'}, remote: true %>
-		</td>
-	</tr>
-</table>
-		<% end %>
-		<% end %>
+			<div class="comment_delete"><%= link_to "コメントを消去する", end_users_product_product_comment_path(product.id, comment_id: p.id), method: :delete, date: {confirm:'Are you sure?'}, remote: true %></div>
+	<% end %>
+	</div>
+	<% end %>
+</div>
+</div>
+
+
+<style>
+
+.comment{
+	width:600px;
+}
+.comment1{
+    margin:2em 0;
+    position: relative;
+    padding: 0.25em 1em;
+    border: solid 2px #ffcb8a;
+    border-radius: 3px 0 3px 0;
+}
+.comment1:before,.box18:after
+{
+    content: '';
+    position: absolute;
+    width:10px;
+    height: 10px;
+    border: solid 2px #ffcb8a;
+    border-radius: 50%;
+}
+.comment1:after {
+    top:-12px;
+    left:-12px;
+}
+.comment1:before {
+    bottom:-12px;
+    right:-12px;
+}
+.comment1 p {
+    margin: 0; 
+    padding: 0;
+}
+
+}
+.user_name{
+	height:25px;
+}
+.time{
+	float:right;
+	margin-right:30px;
+	margin-top:5px;
+}
+.comment_comment{
+	height:100px;
+	font-size:20px;
+	 border-top: solid 2px red;
+
+}
+.comment_delete{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+.comment_delete:hover {
+  background: #67c5ff;
+  color: white;
+}
+		.comment_delete a:link { color: #67c5ff; }
+		.comment_delete a:visited { color: #67c5ff; }
+		.comment_delete a:hover { color: white; }
+		.comment_delete a:active { color: white; }
+
+
+</style>

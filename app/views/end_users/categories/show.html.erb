@@ -1,26 +1,134 @@
-<h1><%= @category.name %></h1>
+<%= render 'end_users/end_users/end_user_header' %>
 
-<%= form_with(url: search_end_users_products_path, method: :get, local: true) do |f| %>
-<%= f.label :"都道府県" %>
-<%= f.collection_select :pref, JpPrefecture::Prefecture.all, :code, :name %>
-<%= f.submit "検索する" %>
+<div class="product_box"><%= @categories.name %></div>
+
+
+<div>
+<div class="product_all">
+<% @category.each do |p| %>
+
+<div class="product_list">
+<%= link_to end_users_product_path(p) do %>
+<%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %><% end %>
+<div class="product">
+<p>商品名:<%= p.product_name %></p>
+<p>価格:<%= p.product_price %>円</p>
+<p>ショップ名:<%= p.shop.shop_name %></p>
+<p>商品紹介:<%= p.product_text %></p>
+</div>
+</div>
+
 <% end %>
+</div>
+</div>
+<div><p class="toTop">ページトップへ</p></div>
+<div class="page"><%= paginate @category, class: "paginate" %></div>
+<style>
+.product_box{
+ width:82%;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+  font-size: 40px;
+  text-align: center;
+  position: relative;
+  padding-left: 25px;
+  text-align: center;
+  margin:0 auto 10px;
+  font-style: oblique;
+}
+
+.product_box:before {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: solid 15px transparent;
+  border-bottom: solid 15px rgb(119, 195, 223);
+  }
+  .product_box:after {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 10px;
+  width: 100%;
+  border-bottom: solid 3px rgb(119, 195, 223);
+}
+.product_all{
+    width:1300px;
+    margin:0 auto;
+    overflow: hidden;
+}
 
 
-<% @category.products.each do |p| %>
-<table>
-	<thead>
-		<tr>
-			<th><%= link_to end_users_product_path(p) do %>
-				<%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %></th>
-		</tr>
-	<tbody>
-		<tr>
-			<td>商品名:<%= p.product_name %></td>
-			<td>価格:<%= p.product_price %>円</td>
-			<td>ショップ名:<%= p.shop.shop_name %></td>
-			<td>商品紹介:<%= p.product_text %></td>
-		</tr>
-	</tbody>
-</thead>
-<% end %>
+.product_list {
+	float: left;
+  text-align: center;
+    position: relative;
+    padding: 0.25em 0;
+}
+
+  .product_list:after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: -webkit-linear-gradient(left, rgb(230, 90, 90), transparent);
+  background: -o-linear-gradient(left, rgb(230, 90, 90), transparent);
+  background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+  }
+
+.product_image1{
+  width:300px;
+  margin: 5px;
+  display: inline-block;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.product_image1:hover {
+  opacity: 0.6;
+}
+p {
+ width: 300px;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ -o-text-overflow: ellipsis;
+ font-style: oblique;
+}
+form{
+  margin-bottom:20px;
+}
+
+.toTop {
+  position: relative;
+  background-color: #1abc9c;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 40px;
+  -webkit-transition: none;
+  transition: none;
+  box-shadow: 0 3px 0 #0e8c73;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  text-align: center;
+  margin:20px auto;
+  font-size:20px;
+}
+.toTop:hover {
+  background-color: #31c8aa;
+  box-shadow: 0 3px 0 #23a188;
+}
+.toTop:active {
+  top: 3px;
+  box-shadow: none;
+}
+.page{
+  margin: 0 auto;
+  text-align: center;
+  font-size:20px;
+    overflow: hidden;
+}
+
+</style>

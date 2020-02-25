@@ -26,7 +26,6 @@
 .a {
   background-image: url(top.png);
   background-size: cover;
-  height: 800px;
   width: 100%;
   color: #FFFAFA;
   background-position: center center;
@@ -35,15 +34,23 @@
   background-size: cover;
   background-color: #464646;
   z-index: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+　overflow: hidden;
 }
 
 
 .title {
 	font-size: 50px;
 	font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+  text-align:center;
+  margin:100px auto;
+      backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width:600px;
 }
-.link {
-	font-size: 25px;
-	font-color: #F0F8FF;
-	font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+
+
+body{
+	background-color:white
 }

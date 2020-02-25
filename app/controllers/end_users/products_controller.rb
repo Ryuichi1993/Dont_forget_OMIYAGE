@@ -1,7 +1,7 @@
 class EndUsers::ProductsController < ApplicationController
 
   def index
-  @product = Product.all
+  @product = Product.page(params[:page]).reverse_order
   end
 
   def show
@@ -15,7 +15,8 @@ class EndUsers::ProductsController < ApplicationController
 
   def search
   @shop = Shop.where(prefecture_code: params[:pref])
-  @product = Product.where(shop_id: @shop.pluck(:id))
+  @products = Product.where(shop_id: @shop.pluck(:id))
+  @product = @products.page(params[:page]).reverse_order
   render :index
   end
 end

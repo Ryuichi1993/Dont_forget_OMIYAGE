@@ -1,36 +1,71 @@
 
 
 <header class="navbar">
-	<div class="container">
+	<div class="container_head">
         <nav class="nav navbar-nav navbar-left">
-			<span class=" h2 text-muted">Dont Forget OMIYAGE</span>
+			<span class="title1">Dont Forget OMIYAGE</span>
 		</nav>
-			<nav>
-				<ul class="nav navbar-nav navbar-right">
-					<% if end_user_signed_in? %><li class="nav-item"><%= link_to end_users_end_user_path(current_end_user) do %>
-						<span class="glyphicon glyphicon-home" aria-hidden="true"> My Page</span></li><% end %>
-					</li>
-					<li class="nav-item"><%= link_to link_to end_users_shops_path do %>
-						<span class="glyphicon glyphicon-user" aria-hidden="true"> Shop</span></li><% end %>
-					<li class="nav-item"><%= link_to end_users_products_path do %>
-						<span class="glyphicon glyphicon-book" aria-hidden="true"> Goods</span></li><% end %>
+			<nav class="right">
+				
+					<% if end_user_signed_in? %><div class="item"><%= link_to end_users_end_user_path(current_end_user) do %>
+						My Page<% end %>
+					</div>
+					<div class="item"><%= link_to end_users_shops_path do %>
+						 Shop <% end %></div>
+					<div class="item"><%= link_to end_users_products_path do %>
+						 Goods<% end %></div>
 
-					<li class="nav-item"><%= link_to edit_end_users_end_user_path(current_end_user) do %>
-						<span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Edit</span></li><% end %>
+					<div class="item"><%= link_to edit_end_users_end_user_path(current_end_user) do %>
+						 Edit<% end %></div>
 
-					<li class="nav-item"><%= link_to destroy_end_user_session_path, method: :delete do %><span class="glyphicon glyphicon-log-out" aria-hidden="true"> logout</span></li><% end %>
+					<div class="item"><%= link_to destroy_end_user_session_path, method: :delete do %> logout<% end %></div>
 
 
 					<% else %>
 					<li class="nav-item"><%= link_to root_path do %>
-						<span class="glyphicon glyphicon-home" aria-hidden="true"> Top</span></li><% end %>
+						<div class="item"> Top</div></span></li><% end %>
 					<li class="nav-item"><%= link_to top_show_path do %>
-						<span class="glyphicon glyphicon-link" aria-hidden="true"> About</span></li><% end %>
-					<li class="nav-item"><%= link_to new_end_user_registration_path do %><span class="glyphicon glyphicon-check" aria-hidden="true"> sign up</span></li><% end %>
+						<div class="item"> About</div></span></li><% end %>
+					<li class="nav-item"><%= link_to new_end_user_registration_path do %><div class="item"> sign up</div></span></li><% end %>
 					<li class="nav-item"><%= link_to new_end_user_session_path do %>
-						<span class="glyphicon glyphicon-log-in" aria-hidden="true"> login</span></li><% end %>
+						<div class="item"> login</div></span></li><% end %>
 					<% end %>
 				</ul>
 			</nav>
 	</div>
 </header>
+
+<style>
+	.title1{
+		color:#FFFFFF;
+		font-size:55px;
+		font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+	}
+	a{
+		font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+		}
+
+
+	.item{
+		color:#FFFFFF;
+		float:left;
+		text-align: right;
+		font-size:25px;
+		margin: 20px 10px;
+	}
+		.item a:link { color: white; }
+		.item a:visited { color: white; }
+		.item a:hover { color: white; }
+		.item a:active { color: white; }
+	.nav > li > a{
+    position: relative;
+    display: block;
+    margin: 12px 15px;
+    font-size:15px;
+}
+.right
+{
+	float: right !important;
+    margin-right: 5px auto;
+
+}	</style>

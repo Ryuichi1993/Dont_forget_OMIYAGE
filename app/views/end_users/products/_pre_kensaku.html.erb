@@ -1,5 +1,43 @@
 <%= form_with(url: search_end_users_products_path, method: :get, local: true) do |f| %>
-<%= f.label :"都道府県" %>
-<%= f.collection_select :pref, JpPrefecture::Prefecture.all, :code, :name %>
-<%= f.submit "検索する" %>
+<%= f.label :"商品検索:都道府県で検索する" %>
+<div class="select1"><%= f.collection_select :pref, JpPrefecture::Prefecture.all, :code, :name %></div>
+<%= f.submit "検索する", class: "input1" %>
 <% end %>
+
+<style>
+.select1 select{
+  width:100px;
+  height:30px;
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  margin-bottom:10px;
+}
+.select1 select:hover {
+  background: #67c5ff;
+  color: white;
+}
+  .input1{
+  width:100px;
+  height:30px;
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  }
+.input1:hover {
+  background: #67c5ff;
+  color: white;
+}
+
+form{
+	text-align: center;
+}
+</style>

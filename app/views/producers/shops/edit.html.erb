@@ -1,7 +1,17 @@
 <%= render 'producers/producers/header' %>
 <h1>SHOP編集</h1>
-
+<div class="new">
 	<%= form_for(@shop, url: producers_shop_path(@shop), method: :patch) do |f| %>
+		<% if @shop.errors.any? %>
+	<div class="alert alert-danger" role class="alert">
+		<p class="error-count"><%= @shop.errors.full_messages.count %>errors prohibited this product from being saved:</p>
+		<ul>
+			<% @shop.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
 	<div class="field">
 		<%= f.label :shop_name, "SHOP名" %>
 		<%= f.text_field :shop_name %>
@@ -34,8 +44,8 @@
 	</div>
 	<br>
 
-	<p>※番地まで記入をお願いします　例: 4丁目-5-1など</p>
 	<div class="field">
+	<p>※番地まで記入をお願いします　例: 4丁目-5-1など</p>
   		<%= f.label :address_street, "番地" %>
   		<%= f.text_field :address_street %>
 	</div>
@@ -47,8 +57,8 @@
     </div>
   	<br>
 
-	<p>※記入例: 水・金曜日</p>
   	<div class="field">
+	<p>※記入例: 水・金曜日</p>
   		<%= f.label :regular_holiday, "定休日" %>
   		<%= f.text_field :regular_holiday %>
 	</div>
@@ -66,8 +76,8 @@
 	</div>
 	<br>
 
-	<p>※記入例 :123-4567-890</p>
 	<div class="field">
+	<p>※記入例 :123-4567-890</p>
 		<%= f.label :phone_number, "店舗電話番号" %>
 		<%= f.text_field :phone_number %>
 	</div>
@@ -97,10 +107,10 @@
 	</div>
 	<br>
 
-	<%= f.submit '更新する' %>
+	<div class="field"><%= f.submit '更新する', class: "button" %></div>
 	<% end %>
 
-
+</div>
 
 <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
 <script type="text/javascript"></script>
@@ -117,3 +127,54 @@
 
 </script>
 
+<style>
+	.new{
+		text-align: justify;
+		text-justify: inter-ideograph;
+
+	}
+	.field{
+		width:250px;
+		margin:0 auto;
+
+	}
+	h1{
+		text-align: center;
+	}
+	input{
+		float:right;
+	}
+	select{
+		float:right;
+	}
+	label{
+		margin-left: 20px
+	}
+	p{
+		margin-left: 20px;
+		font-size:16px;
+		text-decoration: underline;
+	}
+	.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #03A9F4;/*色*/
+  border: solid 1px #0f9ada;/*線色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.button:active {
+  /*押したとき*/
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+
+
+</style>

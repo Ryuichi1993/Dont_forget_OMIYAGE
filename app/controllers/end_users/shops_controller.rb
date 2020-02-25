@@ -1,12 +1,19 @@
 class EndUsers::ShopsController < ApplicationController
   def index
-  	@shops = Shop.all
+    @shops = Shop.page(params[:page]).reverse_order
   end
 
   def show
   	@shop = Shop.find(params[:id])
   	gon.shop = @shop.latitude
   	gon.shops = @shop.longitude
+  end
+
+  def search_shop
+  @shop = Shop.where(prefecture_code: params[:pref])
+  @shops = @shop.page(params[:page]).reverse_order
+
+  render :index
   end
 
 

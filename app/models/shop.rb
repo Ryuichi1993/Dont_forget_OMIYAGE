@@ -11,7 +11,6 @@ class Shop < ApplicationRecord
   with_options presence: true do
   validates :shop_name
   validates :shop_text
-  validates :post_code
   validates :prefecture_code
   validates :address_city
   validates :address_street
@@ -34,4 +33,5 @@ end
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+
 end

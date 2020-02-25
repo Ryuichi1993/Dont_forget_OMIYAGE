@@ -1,35 +1,42 @@
 <%= render 'end_users/end_users/end_user_header' %>
-
+<div>
 <h1><%= @product.product_name %>の詳細ページ</h1>
- 閲覧数: <%= @product.impressions_counts(current_end_user) %>人の方が訪れました
+ <h3>閲覧数: <%= @product.impressions_counts(current_end_user) %>人の方が訪れました</h3>
  <br>
-
-<%= attachment_image_tag @product, :product_image, :fill, 400, 200, fallback: "no_image.jpg", size: '400x200' %>
+<div class="product_show">
+<main class="clearfix">
+ <%= attachment_image_tag @product, :product_image, :fill, 400, 200, fallback: "no_image.jpg", size: '400x200' %>
 <br>
-
-商品価格:<%= @product.product_price %>円
+<div class="product_int">
+<p>商品価格:<%= @product.product_price %>円</p>
 <br>
-商品説明:<%= @product.product_text %>
-
-<p>販売店舗</p>
-店舗名:<%= @product.shop.shop_name %>
-<br>
-<%= attachment_image_tag @product.shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", siza: '200x200' %>
-<br>
-ショップ説明:<%= @product.shop.shop_text %>
-
-
+<p>商品説明:<%= @product.product_text %></p>
 <div id= "favorite-<%= @product.id %>"><%= render 'end_users/products/iine', product: @product %>いいね</div>
+<br>
 
 	<%= form_for(@memory, url: end_users_memories_path ) do |f| %>
 		<%= f.hidden_field :product_id, :value => @product.id %>
 		<%= f.hidden_field :end_user_id, :value => current_end_user.id %>
-		<%= f.submit "予約しておく" %>
+		<div class="p1"><%= f.submit "予約しておく", class: "input1"  %></div>
 	<% end %>
+</div>
+</main>
+<div class="shop">
+<%= attachment_image_tag @product.shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", siza: '200x200' %>
+<div class="shop_int">
+<p class="aa">販売店舗</p>
+<p>店舗名:<%= @product.shop.shop_name %></p>
+<br>
+<br>
+<p>ショップ説明:<%= @product.shop.shop_text %></p>
+</div>
+</div>
+</div>
 
 
+<div class="toukou">
 <h2>コメント投稿</h2>
-<%= form_with model: [@product,@comment], url: end_users_product_product_comment_path(product_id: @product.id), remote: true do |f| %>
+<%= form_for([@product,@comment], url: end_users_product_product_comment_path(product_id: @product.id), remote: true) do |f| %>
 <% if @comment.errors.any? %>
 <div class="alert alert-danger" role="alert">
 	<p class="error-count"><%= @comment.errors.full_messages.count %>errors prohibited this @comment from being saved:</p>
@@ -40,16 +47,99 @@
 	</ul>
 </div>
 <% end %>
+<div class="form_label">
 <%= f.label :comment, "Comment" %>
 <%= f.text_field :comment, size: "100x10", class: "form-control" %>
-<%= f.submit 'コメントする' %>
+<div class="comment_form"><%= f.submit "コメントする", class: "input1" %></div>
+</div>
 <% end %>
 
 <h2>コメント一覧</h2>
 <div id= "submit1">
 <%= render 'end_users/products/product_comment', product: @product, comment: @comment %></div>
 
+</div>
+</div>
+<style>
+.product_show{
+	width:1300px;
+	margin:0 auto;
+	position: relative;
+}
+.product_int{
+	display: inline-block;
+  	vertical-align: top
+  	margin:10px auto;
+  	height: 340px;
+
+}
+.product{
+  width: 600px;
+  height: 340px;
+  margin: 0 auto;
+  padding-left:30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  float:left;
+  vertical-align: top;
+}
+.shop_image{
+  width: 600px;
+  height: 340px;
+  margin: 0 auto;
+  padding-left:30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  float:left;
+  vertical-align: top;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+  text-align: center;
+}
+.shop_int{
+	display: inline-block;
+  	vertical-align: top
+  	margin:10px auto;
+  	height: 340px;
+}
+.aa{
+	margin-top:15px;
+}
+.p1{
+	font-size:20px;
+}
+  .input1{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  }
+.input1:hover {
+  background: #67c5ff;
+  color: white;
+}
+.toukou{
+  width:1300px;
+  margin: 0 auto;
+}
 
 
-
+h1{
+	text-align: center;
+}
+h3{
+	text-align:center;
+}
+p{
+	font-size:20px;
+  font-style: oblique;
+	border-bottom: solid 1px #000;
+}
+</style>
 

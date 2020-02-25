@@ -27,14 +27,20 @@ namespace    :end_users do
   end
   get 'thank', to: 'reservation#thank'
   resources  :product_categories, only: [:index, :show]
-  resources  :categories, only: [:index, :show]
+  resources  :categories, only: [:index, :show] do
+    get'search_product', on: :collection
+  end
+  get 'search_product', to:'categories#search_product'
   resources  :products do
   get 'search',   on: :collection
   resource  :product_comment,only: [:create, :destroy]
   resource  :favorite, only: [:index, :create, :destroy]
   end
   get 'search',   to: 'end_users#search'
-  resources  :shops
+  resources  :shops do
+  get'search_shop', on: :collection
+  end
+  get 'search_shop',   to: 'shops#search_shop'
   resources  :end_users do
   get 'withdraw', on: :member
   get 'ranking',  on: :collection

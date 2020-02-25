@@ -11,15 +11,12 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><%= r.start_date %></td>
-			<td><%= r.end_date %></td>
+			<td><%= r.start_date.strftime("%Y-%m-%d%H:%M") %></td>
+			<td>
+			<br>
+			<td><%= r.start_date.strftime("%Y-%m-%d%H:%M") %></td>
 		</tr>
 	</tbody>
 </table>
 <% end %>
-
-<%= @resevation.products.each do |p| %>
-
-<% end %>
-
 

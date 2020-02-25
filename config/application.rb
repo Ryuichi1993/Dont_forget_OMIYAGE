@@ -11,7 +11,7 @@ module DontForgetOmiyage
     # Initialize configuration defaults for originally generated Rails version.
 
 
-# 特にここ！！Rails5から productionでも呼び出せるように設定しないといけない
+config.i18n.default_locale = :ja
 config.enable_dependency_loading = true
 
     # Settings in config/environments/* take precedence over those specified here.

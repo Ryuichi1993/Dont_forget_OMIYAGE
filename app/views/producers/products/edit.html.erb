@@ -1,4 +1,5 @@
 <%= render 'producers/producers/header' %>
+<div class="new">
 <h1><%= @product.product_name%>の編集ページ</h1>
 	<%= form_for(@product, url: producers_product_path(@product), method: :patch) do |f| %>
 	<% if @product.errors.any? %>
@@ -21,11 +22,12 @@
 
 		<div class="field">
 			<%= f.label :product_text, "商品説明" %>
-			<%= f.text_field :product_text %>
+			<div class="text"><%= f.text_area :product_text %></div>
 		</div>
 		<br>
 
 		<div class="field">
+			<p>※円や小数点不要</p>
 			<%= f.label :product_price, "商品価格" %>
 			<%= f.text_field :product_price %>
 		</div>
@@ -37,5 +39,68 @@
 		</div>
 		<br>
 
-		<%= f.submit "送信する" %>
+		<div class="field"><%= f.submit "送信する", class: "button" %></div>
 	<% end %>
+
+</div>
+<style>
+	.new{
+		text-align: justify;
+		text-justify: inter-ideograph;
+
+	}
+	.field{
+		width:250px;
+		margin:0 auto;
+
+	}
+	.field1{
+		text-align:center;
+	}
+	textarea#product_product_text {
+		width:400px;
+		height:100px;
+		margin-left:100px;
+	}
+	#product_product_image{
+		margin-top: 20px;
+	}
+	h1{
+		text-align: center;
+	}
+	input{
+		float:right;
+	}
+	select{
+		float:right;
+	}
+	label{
+		margin-left: 20px
+	}
+	p{
+		margin-left: 20px;
+		font-size:16px;
+		text-decoration: underline;
+	}
+	.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #03A9F4;/*色*/
+  border: solid 1px #0f9ada;/*線色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.button:active {
+  /*押したとき*/
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+
+</style>

@@ -1,22 +1,106 @@
 <%= render 'producers/producers/header' %>
-<h1>shop一覧</h1>
-
+<h1>店舗一覧</h1>
+<div class="shop_all">
 <h2><%= current_producer.name %>のショップ一覧</h2>
-
 		<% current_producer.shops.each do |shop| %>
-	<table>
-		<thead>
-			<tr>
-				<th><%= attachment_image_tag shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>店名:<%= shop.shop_name %></td>
-				<th><%= link_to "詳細を見る", producers_shop_path(shop) %>
-				<td><%= link_to "編集", edit_producers_shop_path(shop) %>
-				<td><%= link_to "削除", producers_shop_path(shop), method: :delete %>
-			</tr>
-		</tbody>
-	</table>
+<div class="shop">
+		<%= link_to producers_shop_path(shop) do %>
+		<%= attachment_image_tag shop, :shop_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "shop_image1" %><% end %>
+		<div>
+		<p>店名:<%= shop.shop_name %></p>
+		<p><%= link_to "詳細を見る", producers_shop_path(shop) %></p>
+		<p><%= link_to "編集", edit_producers_shop_path(shop) %></p>
+		<p><%= link_to "削除", producers_shop_path(shop), method: :delete %></p>
+	</div>
+</div>
 		<% end %>
+</div>
+
+<style>
+	.shop_all{
+		width: 1300px;
+		margin: 0 auto;
+		text-align:center;
+		overflow: hidden;
+	}
+	.shop {
+		float: left;
+		text-align: center;
+		position: relative;
+		padding: 0.25em 0;
+	}
+
+	.shop:after {
+		content: "";
+		display: block;
+		height: 4px;
+		background: -webkit-linear-gradient(left, rgb(230, 90, 90), transparent);
+		background: -o-linear-gradient(left, rgb(230, 90, 90), transparent);
+		background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+	}
+	.shop_image1{
+		width:300px;
+		height:200px;
+		margin: 5px;
+		display: inline-block;
+		color: #fff;
+		cursor: pointer;
+		transition: all 0.3s ease 0s;
+	}
+	.shop_image1:hover {
+		opacity: 0.6;
+	}
+
+
+	p {
+		width: 300px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		font-style: oblique;
+		position: relative;
+	}
+
+	p:after {
+		position: absolute;
+		content: " ";
+		display: block;
+		border-bottom: solid 3px skyblue;
+		bottom: -3px;
+		width: 50%;
+	}
+
+	h1{
+		width:82%;
+		text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+		font-size: 40px;
+		text-align: center;
+		position: relative;
+		padding-left: 25px;
+		text-align: center;
+		margin:0 auto 10px;
+	}
+
+	h1:before {
+		position: absolute;
+		content: '';
+		bottom: -3px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border: none;
+		border-left: solid 15px transparent;
+		border-bottom: solid 15px rgb(119, 195, 223);
+	}
+	h1:after {
+		position: absolute;
+		content: '';
+		bottom: -3px;
+		left: 10px;
+		width: 100%;
+		border-bottom: solid 3px rgb(119, 195, 223);
+	}
+
+
+</style>

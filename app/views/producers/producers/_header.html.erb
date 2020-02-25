@@ -1,20 +1,58 @@
-<header>
-	<% if producer_signed_in? %>
-      <nav>
-        <ul class="main-nav">
-          <li><%= link_to "logout", destroy_producer_session_path, method: :delete %></li>
-          <li><%= link_to "マイページ", producers_producer_path(current_producer) %></li>
-          <li><%= current_producer.email %><br></li>さん、こんにちは
+<header class="navbar">
+  <div class="container_head">
+      <nav class="nav navbar-nav navbar-left">
+        <span class="title1">Dont Forget OMIYAGE</span>
+      </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+	       <% if producer_signed_in? %><
+          <li class="nav-item">
+              <%= link_to producers_producer_path(current_producer) do %>
+                <div class="item"> Home</div><% end %>
+          </li>
+          <li class="nav-item"><%= link_to producers_shops_path do %>
+              <div class="item"> Shop</div><% end %>
+          </li>
+          <li class="nav-item"><%= link_to producers_products_path do %>
+              <div class="item"> Goods</div><% end %>
+          </li>
+          <li class="nav-item"><%= link_to destroy_producer_session_path, method: :delete do %>
+            <div class="item"> Log out</div><% end %>
+          </li>
         </ul>
       </nav>
 
       <!-- ログインしていない状態 -->
     <% else %>
-      <nav>
-        <ul class="main-nav">
-          <li><%= link_to "login", new_producer_session_path  %></li>
-          <li><%= link_to "sign up",  new_producer_registration_path %></li>
+      <li class="nav-item">
+          <li class="nav-item"><%= link_to new_producer_session_path do %>
+            <div class="item"> Log in</div><% end %>
+          </li>
+          <li class="nav-item"><%= link_to new_producer_registration_path do %>
+            <div class="item"> Log out</div><% end %>
+          </li>
         </ul>
       </nav>
     <% end %>
 </header>
+
+
+<style>
+  .title1{
+    color:#FFFFFF;
+    font-size:55px;
+    font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+  }
+  a{
+    font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+    }
+  .item{
+    color:#FFFFFF;
+    font-size: 20px;
+    margin-top:15px;
+  }
+    .item a:link { color: white; }
+    .item a:visited { color: white; }
+    .item a:hover { color: white; }
+    .item a:active { color: white; }
+  </style>

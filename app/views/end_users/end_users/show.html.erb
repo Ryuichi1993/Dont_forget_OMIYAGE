@@ -1,52 +1,188 @@
 <%= render 'end_users/end_users/end_user_header' %>
 
-<h1>マイページ</h1>
-<% @category.each do |c| %>
-<%= link_to end_users_category_path(c) do %>
-<%= c.name %>
-<% end %>
-<% end %>
-<br>
-<br>
-<strong>いいね数TOP3</strong>
 <div>
-<div class="box1">
-<% @ranking.each.with_index(1) do |rank, i| %>
-<div class="box2">
-	第<%= i %>位 <%= rank.favorites.count %>いいね
-
+<div class="top3">カテゴリーから探す</div>
+<div class="box4">
+	<% @category.each do |c| %>
+		<div class="category_list">
+			<%= link_to end_users_category_path(c) do %>
+			<%= c.name %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<br>
+<br>
+<div class="top3">いいね数TOP5</div>
+	<div class="box1">
+		<% @ranking.each.with_index(1) do |rank, i| %>
+		<div class="box2">
+		<p class="rank_p">第<%= i %>位 <%= rank.favorites.count %>いいね</p>
 			<div><%= link_to end_users_product_path(rank) do %>
-				<%= attachment_image_tag rank, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %></div>
-			<div>商品名:<%= rank.product_name %><br>
-			価格:<%= rank.product_price %>円<br>
-			ショップ名:<%= rank.shop.shop_name %><br>
-			商品紹介:<%= rank.product_text %></div>
+				 <%= attachment_image_tag rank, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %><% end %></div>
+				<div class="box3"><p>商品名:<%= rank.product_name %></p>
+					<p>価格:<%= rank.product_price %>円</p>
+					<p>ショップ名:<%= rank.shop.shop_name %></p>
+					<p>商品紹介:<%= rank.product_text %></p></div>
+		</div>
+		<% end %>
+			<div class="clearfix">
+				<div class="ranking"><%= link_to "いいねランキングを見る", iine_ranking_end_users_end_users_path %></div>
+				</div>
+			</div>
 </div>
-<% end %>
-</div>
-</div>
-<div><%= link_to "いいねランキングを見る", iine_ranking_end_users_end_users_path %></div>
 <br>
 
-<strong>閲覧数TOP3</strong>
-<div>
-<div class="box1">
-<% @view.each.with_index(1) do |rank, i| %>
-<div class="box2">
+<div class="top3">閲覧数TOP5</div>
+		<div class="box1">
+		<% @view.each.with_index(1) do |rank, i| %>
+			<div class="box2">
 
-	第<%= i %>位 <%= rank.impressions_counts(current_end_user) %> view
+			<p class="rank_p">第<%= i %>位 <%= rank.impressions_counts(current_end_user) %> view</p>
 
-	
-			<div><%= link_to end_users_product_path(rank) do %>
-				<%= attachment_image_tag rank, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %><% end %></div>
-			<div>商品名:<%= rank.product_name %>
-			価格:<%= rank.product_price %>円
-			ショップ名:<%= rank.shop.shop_name %>
-			商品紹介:<%= rank.product_text %></div>
-</div>
-<% end %>
-</div>
-</div>
-<div><%= link_to '閲覧数ランキングを見る', ranking_end_users_end_users_path %></div>
+				<div><%= link_to end_users_product_path(rank) do %>
+					<%= attachment_image_tag rank, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %><% end %></div>
+				<div class="box3"><p>商品名:<%= rank.product_name %></p>
+					<p>価格:<%= rank.product_price %>円</p>
+					<p>ショップ名:<%= rank.shop.shop_name %></p>
+					<p>商品紹介:<%= rank.product_text %></p></div>
+			</div>
+		<% end %>
+			<div class="clearfix">
+			<div class="ranking"><%= link_to '閲覧数ランキングを見る', ranking_end_users_end_users_path %></div>
+			</div>
+		</div>
 </div>
 
+		<style>
+
+		.box1{
+		width:1200px;
+		height:400px;
+		margin: 0 auto;
+		position: relative;
+		}
+		.box2{
+		float: left;
+		width: 220px;
+		margin: 5px;
+		text-align: center;
+		position: relative;
+		padding: 0.25em 0;
+		}
+
+		.box2:after {
+		content: "";
+		display: block;
+		height: 4px;
+		background: -webkit-linear-gradient(left, rgb(230, 90, 90), transparent);
+		background: -o-linear-gradient(left, rgb(230, 90, 90), transparent);
+		background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+		}
+		.box4{
+		text-align:center;
+		margin-left:400px;
+		overflow: hidden;
+		}
+		.product_image1{
+		width:200px;
+		display: inline-block;
+		background-color: #4CAF50;
+		color: #fff;
+		cursor: pointer;
+		transition: all 0.3s ease 0s;
+		}
+		.product_image1:hover {
+		opacity: 0.6;
+		}
+		.ranking{
+		display: inline-block;
+		padding: 0.3em 1em;
+		text-decoration: none;
+		color: #67c5ff;
+		border: solid 2px #67c5ff;
+		border-radius: 3px;
+		transition: .4s;
+		margin-left:5px;
+		}
+		.ranking:hover{
+		background: #67c5ff;
+		color: white;
+		}
+		.rank_p{
+		text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+		font-size: 20px;
+		}
+		.top3{
+		width:82%;
+		text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+		font-size: 30px;
+		text-align: center;
+		position: relative;
+		padding-left: 25px;
+		text-align: center;
+		margin:0 auto 10px;
+		}
+
+		.top3:before {
+		position: absolute;
+		content: '';
+		bottom: -3px;
+		left: 0;
+		width: 0;
+		height: 0;
+		border: none;
+		border-left: solid 15px transparent;
+		border-bottom: solid 15px rgb(119, 195, 223);
+		}
+		.top3:after {
+		position: absolute;
+		content: '';
+		bottom: -3px;
+		left: 10px;
+		width: 100%;
+		border-bottom: solid 3px rgb(119, 195, 223);
+		}
+		.category_list{
+		float:left;
+		display: inline-block;
+		max-width: 180px;
+		border: 2px solid #9ec34b;
+		font-size: 16px;
+		color: #9ec34b;
+		text-decoration: none;
+		font-weight: bold;
+		padding: 8px 16px;
+		border-radius: 4px;
+		transition: .4s;
+		}
+
+		.btn-border:hover {
+		background-color: #9ec34b;
+		border-color: #cbe585;
+		color: #FFF;
+		}
+		p{
+		width: 200px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		font-style: oblique;
+
+		}
+		.clearfix::before {
+		content: "";
+		display: block;
+		clear: both;
+		text-align: center;
+		}
+		.ranking a:link { color: #67c5ff; }
+		.ranking a:visited { color: #67c5ff; }
+		.ranking a:hover { color: white; }
+		.ranking a:active { color: white; }
+		h3{
+		text-align: center;
+		}
+
+		</style>

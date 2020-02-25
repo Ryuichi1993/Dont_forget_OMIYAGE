@@ -24,13 +24,13 @@ rails_env = ENV['RAILS_ENV'] || :development
 set :environment, :development
 set :output, 'log/cron.log' # ログの出力先ファイルを設定
 every 1.hours do
-	rake "mail:dont_fotget"
-	runner "NotificationMailer.dont_fotget.deliver"
+	rake "mail:dont_forget"
+	runner "NotificationMailer.dont_forget.deliver"
 end
 
-every 1.minutes do
+every 1.hours do
 	rake "mail:dont_forget_end"
-	runner "NotificationMailer.dont_fotget_end.deliver"
+	runner "NotificationMailer.dont_forget_end.deliver"
 end
 
 every 4.days do

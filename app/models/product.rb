@@ -27,7 +27,7 @@ end
 	end
 
 	def self.ranking
-		@ranking = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(3).pluck(:product_id))
+		@ranking = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
 	end
 
 	def self.iine_ranking
@@ -35,7 +35,7 @@ end
 	end
 
 	def self.view
-		@view = Product.order('impressions_count desc').limit(3)
+		@view = Product.order('impressions_count desc').limit(5)
 	end
 
 	def self.ranking_view
