@@ -1,3 +1,5 @@
+<div class="signtop1">
+  <div class="sign_up">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -32,3 +34,114 @@
 <% end %>
 
 <%= render "producers/shared/links" %>
+</div>
+</div>
+
+<style>
+
+#end_user_name{
+  color:#555;
+}
+
+body {
+  background: #456;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.sign_up {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+  color:white;
+
+}
+
+/* Reset top and bottom margins from certain elements */
+.sign_up-header,
+.sign_up p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* The triangle form is achieved by a CSS hack */
+.sign_up-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #28d;
+}
+
+.sign_up-header {
+  background: #28d;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.sign_up-container {
+  background: #ebebeb;
+  padding: 12px;
+}
+
+/* Every row inside .login-container is defined with p tags */
+.sign_up p {
+  padding: 12px;
+}
+
+.sign_up input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.sign_up input[type="email"],
+.sign_up input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+/* Text fields' focus effect */
+.sign_up input[type="email"]:focus,
+.sign_up input[type="password"]:focus {
+  border-color: #888;
+}
+
+.sign_up input[type="submit"] {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sign_up input[type="submit"]:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+.sign_up input[type="submit"]:focus {
+  border-color: #05a;
+}
+h2{
+  font-size:40px;
+  color:white;
+}
+  a:link {
+  color: white;
+  }
+
+  a:visited {
+  color:white;
+  }
+
+</style>

@@ -22,15 +22,14 @@
 
 
 					<% else %>
-					<li class="nav-item"><%= link_to root_path do %>
-						<div class="item"> Top</div></span></li><% end %>
-					<li class="nav-item"><%= link_to top_show_path do %>
-						<div class="item"> About</div></span></li><% end %>
-					<li class="nav-item"><%= link_to new_end_user_registration_path do %><div class="item"> sign up</div></span></li><% end %>
-					<li class="nav-item"><%= link_to new_end_user_session_path do %>
-						<div class="item"> login</div></span></li><% end %>
+					<div class="item"><%= link_to root_path do %>
+						 Top<% end %></div>
+					<div class="item"><%= link_to top_show_path do %>
+						 About<% end %></div>
+					<div class="item"><%= link_to new_end_user_registration_path do %> sign up<% end %></div>
+					<div class="item"><%= link_to new_end_user_session_path do %>
+						 login<% end %></div>
 					<% end %>
-				</ul>
 			</nav>
 	</div>
 </header>

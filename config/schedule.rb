@@ -21,7 +21,7 @@
 env :PATH, ENV['PATH'] # 絶対パスから相対パス指定
 rails_env = ENV['RAILS_ENV'] || :development
 # cronを実行する環境変数をセット
-set :environment, :development
+set :environment, :development, :production
 set :output, 'log/cron.log' # ログの出力先ファイルを設定
 every 1.hours do
 	rake "mail:dont_forget"
