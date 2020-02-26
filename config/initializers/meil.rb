@@ -1,10 +1,13 @@
+mail = ENV['MAIL_ADDRESS']
+pass = ENV['MAIL_PASSWORD']
+
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
   address: 'smtp.gmail.com',
   domain: 'gmail.com',
   port: 587,
-  user_name: 'huzimokunn0@gmail.com',
-  password: 'huzityou0',
+  user_name: mail,
+  password: pass,
   authentication: 'plain',
   enable_starttls_auto: true
 }
