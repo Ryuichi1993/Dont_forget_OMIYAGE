@@ -1,19 +1,23 @@
 <%= render 'end_users/end_users/end_user_header' %>
 <div class="reservation">
-<h1>予約メールを設定する</h1>
-<%= form_for(@reservation, url: end_users_reservations_path) do |f| %>
-<div class="date">
-<h3>送信開始</h3>
-<%= f.text_field :start_date, value: "", class: "datetimepicker1", autocomplete: "off" %>
-<h3>送信終了</h3>
-<%= f.text_field :end_date, value: "", class: "datetimepicker2", autocomplete: "off" %>
+	<h1>予約メールを設定する</h1>
+	<%= form_for(@reservation, url: end_users_reservations_path) do |f| %>
+	<div class="date">
+
+		<h3>送信開始</h3>
+		<%= f.text_field :start_date, value: "", class: "datetimepicker1", autocomplete: "off" %>
+
+		<h3>送信終了</h3>
+		<%= f.text_field :end_date, value: "", class: "datetimepicker2", autocomplete: "off" %>
+
+	</div>
+	<div class="submit1">
+		<%= f.submit "この日程で予約する", class: "input1"%>
+	</div>
+	<% end %>
 </div>
-<div class="submit1"><%= f.submit "この日程で予約する", class: "input1"%></div>
-<% end %>
-</div>
 
-
-
+<%= render 'end_users/end_users/end_user_footer' %>
 
 
 
@@ -27,48 +31,53 @@
 
 <script type="text/javascript">
 
-$(function () {
-  $(".datetimepicker1").datetimepicker();
-});
+	$(function () {
+		$(".datetimepicker1").datetimepicker();
+	});
 
-$(function () {
-  $(".datetimepicker2").datetimepicker();
-});
+	$(function () {
+		$(".datetimepicker2").datetimepicker();
+	});
 
 </script>
 
 <style>
-	.reservation{
-		width:1300px;
-		margin:0 auto;
-	}
-	h1{
-		text-align: center;
-	}
-	h3{
-		text-align: center;
-	}
+.reservation {
+width:1300px;
+margin:0 auto;
+}
 
-	.date{
-		margin:0 auto;
-		text-align: center;
-	}
-	.submit1{
-		text-align: center;
-		padding-top:20px;
-	}
-	.input1{
-  display: inline-block;
-  padding: 0.3em 1em;
-  text-decoration: none;
-  color: #67c5ff;
-  border: solid 2px #67c5ff;
-  border-radius: 3px;
-  transition: .4s;
-	}
+h1 {
+text-align: center;
+}
+
+h3 {
+text-align: center;
+}
+
+.date {
+margin:0 auto;
+text-align: center;
+}
+
+.submit1 {
+text-align: center;
+padding-top:20px;
+}
+
+.input1 {
+display: inline-block;
+padding: 0.3em 1em;
+text-decoration: none;
+color: #67c5ff;
+border: solid 2px #67c5ff;
+border-radius: 3px;
+transition: .4s;
+}
+
 .input1:hover {
-  background: #67c5ff;
-  color: white;
+background: #67c5ff;
+color: white;
 }
 
 </style>

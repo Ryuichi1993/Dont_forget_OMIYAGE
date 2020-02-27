@@ -1,4 +1,5 @@
 class Producers::ProducersController < ApplicationController
+  before_action :authenticate_producer!
   def index
   end
 

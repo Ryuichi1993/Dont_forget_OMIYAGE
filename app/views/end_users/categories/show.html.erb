@@ -23,6 +23,7 @@
 </div>
 <div><p class="toTop">ページトップへ</p></div>
 <div class="page"><%= paginate @category, class: "paginate" %></div>
+<%= render 'end_users/end_users/end_user_footer' %>
 <style>
 .product_box{
  width:82%;
@@ -86,6 +87,9 @@
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+      border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
 }
 .product_image1:hover {
   opacity: 0.6;

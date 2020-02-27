@@ -1,5 +1,5 @@
 class EndUsers::ProductsController < ApplicationController
-
+before_action :authenticate_end_user!
   def index
   @product = Product.page(params[:page]).reverse_order
   end
@@ -10,13 +10,12 @@ class EndUsers::ProductsController < ApplicationController
     @product.impressions.last.update(user_id: current_end_user.id)
   	@comment = ProductComment.new
     @memory = Memory.new
-
   end
 
   def search
-  @shop = Shop.where(prefecture_code: params[:pref])
-  @products = Product.where(shop_id: @shop.pluck(:id))
-  @product = @products.page(params[:page]).reverse_order
-  render :index
+    @shop = Shop.where(prefecture_code: params[:pref])
+    @products = Product.where(shop_id: @shop.pluck(:id))
+    @product = @products.page(params[:page]).reverse_order
+    render :index
   end
 end

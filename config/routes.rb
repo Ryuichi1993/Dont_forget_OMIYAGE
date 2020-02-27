@@ -34,7 +34,7 @@ namespace    :end_users do
   resources  :products do
   get 'search',   on: :collection
   resource  :product_comment,only: [:create, :destroy]
-  resource  :favorite, only: [:index, :create, :destroy]
+  resource  :favorite, only: [:create, :destroy]
   end
   get 'search',   to: 'end_users#search'
   resources  :shops do

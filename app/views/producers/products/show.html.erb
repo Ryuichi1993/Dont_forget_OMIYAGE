@@ -1,19 +1,95 @@
 <%= render 'producers/producers/header' %>
-<h1><%= @product.product_name %>の詳細ページ</h1>
+<div>
+  <h1><%= @product.product_name %>の詳細ページ</h1>
+  <div class="product">
+    <%= attachment_image_tag @prouduct, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %>
+    <div class="product_text">
+      商品名:<%= @product.product_name %>
+      商品価格:<%= @product.product_price %>
+      商品説明<%= @product.product_text %>
+      <%= link_to "編集", edit_admins_product_path(@product) %>
+      <%= link_to "削除", admins_product_path(@product), method: :delete %>
+    </div>
+  </div>
+</div>
 
-<table>
-	<thead>
-		<tr>
-			<th><%= attachment_image_tag @prouduct, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>商品名:<%= @product.product_name %></td>
-			<td>商品価格:<%= @product.product_price %></td>
-		</tr>
-	</tbody>
-</table>
-			商品説明<%= @product.product_text %>
-			<%= link_to "編集", edit_admins_product_path(@product) %>
-			<%= link_to "削除", admins_product_path(@product), method: :delete %>
+<style>
+
+  .product_image1 {
+    width: 600px;
+    height: 340px;
+    margin: 0 auto;
+    padding-left:30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    float:left;
+    vertical-align: top;
+  }
+
+  .product {
+    margin: 0 auto;
+    width:1200px;
+    position: relative;
+    padding: 0.25em 0;
+  }
+
+  .product:after {
+    content: "";
+    display: block;
+    height: 4px;
+    background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+    background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+  }
+
+  .product_text {
+    width:82%;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    font-size: 30px;
+    text-align: center;
+    position: relative;
+    padding-left: 25px;
+    text-align: center;
+    margin:0 auto 10px;
+    font-style: oblique;
+  }
+
+  .product_text:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+  }
+
+  .product_text:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+  }
+
+  .int {
+    font-size:20px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  p {
+
+    border-bottom: solid 1px #000;
+    font-style: oblique;
+  }
+
+  h1 {
+    text-align:center;
+    font-style: oblique;
+  }
+
+
+</style>

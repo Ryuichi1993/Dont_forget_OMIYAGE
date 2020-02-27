@@ -1,43 +1,43 @@
 <%= render 'end_users/end_users/end_user_header' %>
 <div class="thank">
-<p>予約登録が完了しました</p>
-<div class="link1"><%= link_to "予約情報確認する", end_users_reservations_path %></div>
+  <p>予約登録が完了しました</p>
+  <div class="link1"><%= link_to "予約情報確認する", end_users_reservations_path %></div>
 </div>
+<%= render 'end_users/end_users/end_user_footer' %>
 
 <style>
 
-p{
-	font-size:30px;
-	font-style: oblique;
-	text-align: center;
-
+p {
+font-size:30px;
+font-style: oblique;
+text-align: center;
 }
-.thank{
-	text-align: center;
-}
-.link1{
-  display: inline-block;
-  padding: 0.3em 1em;
-  text-decoration: none;
-  color: #67c5ff;
-  border: solid 2px #67c5ff;
-  border-radius: 3px;
-  transition: .4s;
-  text-align: center;
-  width:350px;
-  font-size:25px;
 
-  }
+.thank {
+text-align: center;
+}
+
+.link1 {
+display: inline-block;
+padding: 0.3em 1em;
+text-decoration: none;
+color: #67c5ff;
+border: solid 2px #67c5ff;
+border-radius: 3px;
+transition: .4s;
+text-align: center;
+width:350px;
+font-size:25px;
+}
+
 .link1:hover {
-  background: #67c5ff;
-  color: white;
+background: #67c5ff;
+color: white;
 }
 
 a:link { color:#67c5ff; }
 a:visited { color:#67c5ff; }
 a:hover { color:white; }
 a:active { color:white; }
-
-
 
 </style>

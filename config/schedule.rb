@@ -19,9 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 env :PATH, ENV['PATH'] # 絶対パスから相対パス指定
-rails_env = ENV['RAILS_ENV'] || :development
+rails_env = ENV['RAILS_ENV'] || :production
 # cronを実行する環境変数をセット
-set :environment, :development, :production
+set :environment, :production
 set :output, 'log/cron.log' # ログの出力先ファイルを設定
 every 1.hours do
 	rake "mail:dont_forget"

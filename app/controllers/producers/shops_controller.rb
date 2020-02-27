@@ -1,5 +1,5 @@
 class Producers::ShopsController < ApplicationController
-
+before_action :authenticate_producer!
   def index
     @shops = Shop.all
     @shops_name = @shops.name

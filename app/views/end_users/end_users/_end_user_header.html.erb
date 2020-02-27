@@ -2,35 +2,47 @@
 
 <header class="navbar">
 	<div class="container_head">
-        <nav class="nav navbar-nav navbar-left">
+		<nav class="nav navbar-nav navbar-left">
 			<span class="title1">Dont Forget OMIYAGE</span>
 		</nav>
-			<nav class="right">
-				
-					<% if end_user_signed_in? %><div class="item"><%= link_to end_users_end_user_path(current_end_user) do %>
-						My Page<% end %>
-					</div>
-					<div class="item"><%= link_to end_users_shops_path do %>
-						 Shop <% end %></div>
-					<div class="item"><%= link_to end_users_products_path do %>
-						 Goods<% end %></div>
+		<nav class="right">
 
-					<div class="item"><%= link_to edit_end_users_end_user_path(current_end_user) do %>
-						 Edit<% end %></div>
+			<% if end_user_signed_in? %>
+				<div class="item"><%= link_to end_users_end_user_path(current_end_user) do %>
+				My Page<% end %>
+				</div>
+				<div class="item"><%= link_to end_users_shops_path do %>
+				Shop <% end %>
+				</div>
+				<div class="item"><%= link_to end_users_products_path do %>
+					Goods<% end %>
+				</div>
 
-					<div class="item"><%= link_to destroy_end_user_session_path, method: :delete do %> logout<% end %></div>
+				<div class="item"><%= link_to edit_end_users_end_user_path(current_end_user) do %>
+						Edit<% end %>
+				</div>
+
+				<div class="item"><%= link_to destroy_end_user_session_path, method: :delete do %> logout<% end %>
+				</div>
 
 
-					<% else %>
-					<div class="item"><%= link_to root_path do %>
-						 Top<% end %></div>
-					<div class="item"><%= link_to top_show_path do %>
-						 About<% end %></div>
-					<div class="item"><%= link_to new_end_user_registration_path do %> sign up<% end %></div>
-					<div class="item"><%= link_to new_end_user_session_path do %>
-						 login<% end %></div>
-					<% end %>
-			</nav>
+			<% else %>
+				<div class="item"><%= link_to root_path do %>
+							Top<% end %>
+				</div>
+
+				<div class="item"><%= link_to top_show_path do %>
+								About<% end %>
+				</div>
+
+				<div class="item"><%= link_to new_end_user_registration_path do %> sign up<% end %>
+				</div>
+
+				<div class="item"><%= link_to new_end_user_session_path do %>
+									login<% end %>
+				</div>
+			<% end %>
+		</nav>
 	</div>
 </header>
 
@@ -42,7 +54,7 @@
 	}
 	a{
 		font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
-		}
+	}
 
 
 	.item{
@@ -52,19 +64,18 @@
 		font-size:25px;
 		margin: 20px 10px;
 	}
-		.item a:link { color: white; }
-		.item a:visited { color: white; }
-		.item a:hover { color: white; }
-		.item a:active { color: white; }
+	.item a:link { color: white; }
+	.item a:visited { color: white; }
+	.item a:hover { color: white; }
+	.item a:active { color: white; }
 	.nav > li > a{
-    position: relative;
-    display: block;
-    margin: 12px 15px;
-    font-size:15px;
-}
-.right
-{
-	float: right !important;
-    margin-right: 5px auto;
-
-}	</style>
+		position: relative;
+		display: block;
+		margin: 12px 15px;
+		font-size:15px;
+	}
+	.right{
+		float: right !important;
+		margin-right: 5px auto;
+	}
+</style>

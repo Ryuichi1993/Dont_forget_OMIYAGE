@@ -39,7 +39,7 @@ class EndUsers::EndUsersController < ApplicationController
     else
       render 'new'
     end
-end
+  end
 
   def destroy
     @end_user = current_end_user

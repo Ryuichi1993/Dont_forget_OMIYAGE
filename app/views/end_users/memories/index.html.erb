@@ -5,92 +5,106 @@
 		<main class="clearfix">
 			<% @memories.each do |p| %>
 			<div class="memory">
-				<div><%= attachment_image_tag p.product, :product_image, :fill, 400, 200, fallback: "no_image.jpg", size: '400x200' %></div>
+				<div><%= attachment_image_tag p.product, :product_image, :fill, 400, 200, fallback: "no_image.jpg", size: '400x200', class="product_iamge1" %>
+				</div>
 				<div class="product">
 					<p>商品名:<%= p.product.product_name %></p>
 					<p>商品説明:<%= p.product.product_text %></p>
 					<p>販売店舗:<%= p.product.shop.shop_name %></p>
 					<p><%= link_to "取り消す", end_users_memory_path(p), method: :delete %></p>
 				</div>
-				</div>
-				<% end %>
 			</div>
-			<div class="confirm"><%= link_to "予約メールを設定する", new_end_users_reservation_path %></div>
+			<% end %>
+		</main>
+		<div class="confirm">
+			<%= link_to "予約メールを設定する", new_end_users_reservation_path %>
 		</div>
+	</div>
+</div>
+
+	<%= render 'end_users/end_users/end_user_footer' %>
 
 
+	<style>
+		.memory_list {
+			width:1300px;
+			margin:0 auto;
+		}
 
-		<style>
-			.memory_list{
-				width:1300px;
-				margin:0 auto;
-			}
-			.memory{
-				margin:0 auto;
-				text-align: center;
+		.memory {
+			margin:0 auto;
+			text-align: center;
+		}
 
-			}
-			.product_image{
-				margin-left:30px;
-				margin-right: 30px;
-				margin-bottom:15px;
-				vertical-align: top;
-			}
-			.clearfix::after {
-				content: "";
-				display: block;
-				clear: both;
-				text-align: center;
-			}
+		.product_image1 {
+			margin-left:30px;
+			margin-right: 30px;
+			margin-bottom:15px;
+			vertical-align: top;
+			border-radius: 20px;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}
 
-			.product{
-				display: inline-block;
-			}
-			.confirm{
-				text-align: center;
-				font-size:30px;
-				padding: 20px;
-			}
-			h1{
-				width:1200px;
-				text-shadow: 1px 1px 0 rgba(0,0,0,.2);
-				font-size: 40px;
-				text-align: center;
-				position: relative;
-				padding-left: 25px;
-				text-align: center;
-				margin:0 auto 10px;
-			}
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+			text-align: center;
+		}
 
-			h1:before {
-				position: absolute;
-				content: '';
-				bottom: -3px;
-				left: 0;
-				width: 0;
-				height: 0;
-				border: none;
-				border-left: solid 15px transparent;
-				border-bottom: solid 15px rgb(119, 195, 223);
-			}
-			h1:after {
-				position: absolute;
-				content: '';
-				bottom: -3px;
-				left: 10px;
-				width: 100%;
-				border-bottom: solid 3px rgb(119, 195, 223);
-			}
-			p{
-				width:400px;
-				font-size:20px;
-				font-style: oblique;
-				border-bottom: solid 1px #000;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				-o-text-overflow: ellipsis;
-			}
+		.product {
+			display: inline-block;
+		}
 
-		</style>
+		.confirm {
+			text-align: center;
+			font-size:30px;
+			padding: 20px;
+		}
+
+		h1 {
+			width:1200px;
+			text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+			font-size: 40px;
+			text-align: center;
+			position: relative;
+			padding-left: 25px;
+			text-align: center;
+			margin:0 auto 10px;
+		}
+
+		h1:before {
+			position: absolute;
+			content: '';
+			bottom: -3px;
+			left: 0;
+			width: 0;
+			height: 0;
+			border: none;
+			border-left: solid 15px transparent;
+			border-bottom: solid 15px rgb(119, 195, 223);
+		}
+
+		h1:after {
+			position: absolute;
+			content: '';
+			bottom: -3px;
+			left: 10px;
+			width: 100%;
+			border-bottom: solid 3px rgb(119, 195, 223);
+		}
+
+		p{
+			width:400px;
+			font-size:20px;
+			font-style: oblique;
+			border-bottom: solid 1px #000;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+		}
+
+	</style>
 

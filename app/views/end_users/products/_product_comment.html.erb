@@ -1,5 +1,15 @@
 
 <div class="comment">
+    <% if @comment.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  <p class="error-count"><%= @comment.errors.full_messages.count %>errors prohibited this @comment from being saved:</p>
+  <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 	<% product.product_comments.each do |p| %>
 	<div class="comment1">
 		<div class="user_name">ユーザー名:<%= p.end_user.name %>
@@ -18,18 +28,19 @@
 
 <style>
 
-.comment{
+.comment {
 	width:600px;
 }
-.comment1{
+
+.comment1 {
     margin:2em 0;
     position: relative;
     padding: 0.25em 1em;
     border: solid 2px #ffcb8a;
     border-radius: 3px 0 3px 0;
 }
-.comment1:before,.box18:after
-{
+
+.comment1:before,.box18:after {
     content: '';
     position: absolute;
     width:10px;
@@ -37,35 +48,39 @@
     border: solid 2px #ffcb8a;
     border-radius: 50%;
 }
+
 .comment1:after {
     top:-12px;
     left:-12px;
 }
+
 .comment1:before {
     bottom:-12px;
     right:-12px;
 }
+
 .comment1 p {
     margin: 0; 
     padding: 0;
 }
 
-}
-.user_name{
+.user_name {
 	height:25px;
 }
-.time{
+
+.time {
 	float:right;
 	margin-right:30px;
 	margin-top:5px;
 }
-.comment_comment{
+
+.comment_comment {
 	height:100px;
 	font-size:20px;
 	 border-top: solid 2px red;
-
 }
-.comment_delete{
+
+.comment_delete {
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
@@ -74,14 +89,16 @@
   border-radius: 3px;
   transition: .4s;
 }
+
 .comment_delete:hover {
   background: #67c5ff;
   color: white;
 }
-		.comment_delete a:link { color: #67c5ff; }
-		.comment_delete a:visited { color: #67c5ff; }
-		.comment_delete a:hover { color: white; }
-		.comment_delete a:active { color: white; }
+
+.comment_delete a:link { color: #67c5ff; }
+.comment_delete a:visited { color: #67c5ff; }
+.comment_delete a:hover { color: white; }
+.comment_delete a:active { color: white; }
 
 
 </style>

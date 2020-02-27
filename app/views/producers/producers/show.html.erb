@@ -11,12 +11,12 @@
 
 	<div class="box2">
 		<div class="box3"><%= link_to "店舗一覧", producers_shops_path %></div>
-	<div class="box3"><%= link_to "商品一覧", producers_products_path %></div>
+		<div class="box3"><%= link_to "商品一覧", producers_products_path %></div>
 	</div>
 
 	<div class="box2">
-	<div class="box3"><%= link_to "ユーザー情報を編集する", edit_producer_registration_path(current_producer) %></div>
-	<div class="box3"><%= link_to '退会する方はこちらから', withdraw_producers_producer_path(current_producer) %></div>
+		<div class="box3"><%= link_to "ユーザー情報を編集する", edit_producer_registration_path(current_producer) %></div>
+		<div class="box3"><%= link_to '退会する方はこちらから', withdraw_producers_producer_path(current_producer) %></div>
 	</div>
 </div>
 
@@ -31,13 +31,13 @@
 	}
 	.box3{
 		display: inline-block;
-  		padding: 0.5em 1em;
- 		text-decoration: none;
- 		background: #668ad8;
- 		color: #FFF;
- 		border-bottom: solid 4px #627295;
- 		border-radius: 3px;
- 		width:350px;
+		padding: 0.5em 1em;
+		text-decoration: none;
+		background: #668ad8;
+		color: #FFF;
+		border-bottom: solid 4px #627295;
+		border-radius: 3px;
+		width:350px;
 	}
 	.box3:active {
 		-webkit-transform: translateY(4px);
@@ -51,9 +51,5 @@
 	a:visited { color: white; }
 	a:hover { color: white; }
 	a:active { color: white; }
-
-
-
-
 
 </style>

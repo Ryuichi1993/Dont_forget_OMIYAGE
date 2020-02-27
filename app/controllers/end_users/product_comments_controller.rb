@@ -1,6 +1,6 @@
 class EndUsers::ProductCommentsController < ApplicationController
 
-
+before_action :authenticate_end_user!
 def create
 	@product = Product.find(params[:product_id])
 	@comment = ProductComment.new(product_comment_params)
@@ -9,8 +9,6 @@ def create
 	if @comment.save
     else
     	@product = Product.find(params[:product_id])
-    	@shop = Shop.find(params[:shop_id])
-
     end
 
 end

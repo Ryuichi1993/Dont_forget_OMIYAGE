@@ -1,45 +1,49 @@
 <div class="signtop">
   <div class="sign_up">
-<h2>Sign up</h2>
+    <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="field">
+      <%= f.label :メールアドレス %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :名前 %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :パスワード %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :パスワード確認 %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <br>
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+    <% end %>
+
+    <%= render "end_users/shared/links" %>
+    <%= link_to "back", root_path %>
   </div>
-
-  <div class="field">
-    <%= f.label :名前 %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード確認 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <br>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "end_users/shared/links" %>
 </div>
-</div>
+
+<%= render 'end_users/end_users/end_user_footer' %>
+
 <style>
 
-#end_user_name{
+#end_user_name {
   color:#555;
 }
 
@@ -55,14 +59,12 @@ body {
   color:white;
 }
 
-/* Reset top and bottom margins from certain elements */
 .sign_up-header,
 .sign_up p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* The triangle form is achieved by a CSS hack */
 .sign_up-triangle {
   width: 0;
   margin-right: auto;
@@ -86,7 +88,6 @@ body {
   padding: 12px;
 }
 
-/* Every row inside .login-container is defined with p tags */
 .sign_up p {
   padding: 12px;
 }
@@ -127,20 +128,21 @@ body {
   background: #17c;
 }
 
-/* Buttons' focus effect */
 .sign_up input[type="submit"]:focus {
   border-color: #05a;
 }
-h2{
+
+h2 {
   font-size:40px;
   color:white;
 }
-  a:link {
-  color: white;
-  }
 
-  a:visited {
+a:link {
+  color: white;
+}
+
+a:visited {
   color:white;
-  }
+}
 
 </style>

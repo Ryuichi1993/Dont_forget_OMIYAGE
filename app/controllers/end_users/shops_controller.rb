@@ -1,4 +1,5 @@
 class EndUsers::ShopsController < ApplicationController
+  before_action :authenticate_end_user!
   def index
     @shops = Shop.page(params[:page]).reverse_order
   end

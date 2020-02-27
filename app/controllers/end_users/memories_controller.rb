@@ -1,4 +1,5 @@
 class EndUsers::MemoriesController < ApplicationController
+	before_action :authenticate_end_user!
   def index
   	@end_user = current_end_user
   	@memories = @end_user.memories

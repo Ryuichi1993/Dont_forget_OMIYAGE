@@ -3,7 +3,7 @@ class EndUsers::ReservationsController < ApplicationController
   def index
   	@reservations = Reservation.all
   	current_end_user.reservations.each do |r|
-  		@resevation = r
+  	@resevation = r
   	end
   end
 
@@ -21,9 +21,9 @@ class EndUsers::ReservationsController < ApplicationController
 
   def create
   	@reservation = Reservation.new(reservation_params)
-    current_end_user.memories.each do |m|
-    @reservation.end_user_id = current_end_user.id
-    @reservation.product_id = m.product_id
+      current_end_user.memories.each do |m|
+      @reservation.end_user_id = current_end_user.id
+      @reservation.product_id = m.product_id
     if @reservation.save!
     	current_end_user.memories.destroy_all
     	redirect_to thank_end_users_reservations_path

@@ -1,22 +1,62 @@
 <%= render 'producers/producers/header' %>
-<h1><%= @product.product_name %>の詳細ページ</h1>
-
-<table>
-	<thead>
-		<tr>
-			<th><%= attachment_image_tag @prouduct, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>商品名:<%= @product.product_name %></td>
-			<td>商品価格:<%= @product.product_price %></td>
+<div class= "product_show">
+	<h1><%= @product.product_name %>の詳細ページ</h1>
+	<div class="product">
+		<%= attachment_image_tag @prouduct, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %>
+		<div class="product_int">
+			<p>商品名:<%= @product.product_name %></p>
+			<p>商品価格:<%= @product.product_price %></p>
 			<% @product.product_categories.each do |c|%>
-			<td>ジャンル:<%= c.category.name %>
-				<% end %></td>
-		</tr>
-	</tbody>
-</table>
-			商品説明:<%= @product.product_text %>
+			<p>ジャンル:<%= c.category.name %></p>
+			<% end %>
+			<p>商品説明:<%= @product.product_text %></p>
 			<%= link_to "編集", edit_admins_product_path(@product) %>
 			<%= link_to "削除", admins_product_path(@product), method: :delete %>
+		</div>
+	</div>
+</div>
+
+<style>
+
+	.product_show {
+		width:1300px;
+		margin:0 auto;
+		position: relative;
+	}
+
+	.product_image1 {
+		width: 600px;
+		height: 340px;
+		margin: 0 auto;
+		padding-left:30px;
+		padding-right: 30px;
+		padding-top: 15px;
+		float:left;
+		vertical-align: top;
+		border-radius: 20px;
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+	}
+
+	.product_int {
+		display: inline-block;
+		vertical-align: top;
+		margin:10px auto;
+		height: 340px;
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	h3 {
+		text-align:center;
+	}
+
+	p {
+		font-size:20px;
+		font-style: oblique;
+		border-bottom: solid 1px #000;
+	}
+
+</style>
