@@ -1,6 +1,8 @@
 <%= render 'producers/producers/header' %>
 <div class= "product_show">
-	<h1><%= @product.product_name %>の詳細ページ</h1>
+	<div class="product_name">
+		<h1><%= @product.product_name %>の詳細ページ</h1>
+	</div>
 	<div class="product">
 		<%= attachment_image_tag @prouduct, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %>
 		<div class="product_int">
@@ -12,10 +14,10 @@
 			<% end %></p>
 			<p>商品説明:<%= @product.product_text %></p>
 			<div class="button">
-				<%= link_to "編集", edit_admins_product_path(@product) %>
+				<%= link_to "編集", edit_producers_product_path(@product) %>
 			</div>
 			<div class="button">
-				<%= link_to "削除", admins_product_path(@product), method: :delete %>
+				<%= link_to "削除", producers_product_path(@product), method: :delete %>
 			</div>
 		</div>
 	</div>
@@ -24,16 +26,50 @@
 <style>
 
 	.product_show {
-		width:1300px;
-		margin:0 auto;
-		position: relative;
-		    overflow: hidden;
+	  width:1300px;
+      margin:0 auto;
+	  position: relative;
+	  overflow: hidden;
 	}
+
+	.product_name {
+     width:82%;
+     text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+     font-size: 30px;
+     text-align: center;
+     position: relative;
+     padding-left: 25px;
+     text-align: center;
+     margin:0 auto 10px;
+     font-style: oblique;
+   }
+
+   .product_name:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+   }
+
+   .product_name:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+   }
+
 	.product{
 	  margin: 0 auto;
       position: relative;
       padding: 0.25em 0;
-
+	  overflow: hidden;
 	}
 
 	.product::after{
@@ -45,20 +81,20 @@
 	}
 
 	.product_image1 {
-		width: 600px;
-		height: 320px;
-		margin: 0 auto;
-		vertical-align: top;
-		border-radius: 20px;
-		-webkit-border-radius: 20px;
-		-moz-border-radius: 20px;
+     width: 600px;
+	 height: 300px;
+	 margin-right: 20px;
+	 vertical-align: top;
+	 border-radius: 20px;
+	 -webkit-border-radius: 20px;
+	 -moz-border-radius: 20px;
+	 float: left;
 	}
 
 	.product_int {
-		display: inline-block;
-		vertical-align: top;
-		margin:10px auto;
-		float: right;
+	  display: inline-block;
+	  vertical-align: top;
+	  margin:10px auto;
 	}
 
 	.button {
@@ -84,10 +120,12 @@
 
 	h1 {
 		text-align: center;
+		font-style: oblique;
 	}
 
 	h3 {
 		text-align:center;
+		font-style: oblique;
 	}
 
 	p {
