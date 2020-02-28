@@ -1,3 +1,5 @@
+<%= render 'admins/tops/header' %>
+<div class="end_user">
 <h1><%= @end_user.name %>さんの詳細ページ</h1>
 
 <p>顧客ID</p>
@@ -18,5 +20,11 @@
 	<%= @end_user.introduction %>
 <%= link_to "編集する", edit_admins_end_user_path(@end_user) %>
 
+</div>
 
+<style>
+.end_user{
+	text-align: center;
+}
 
+</style>

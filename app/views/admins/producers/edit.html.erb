@@ -1,2 +1,69 @@
-<h1>Admins::Producers#edit</h1>
-<p>Find me in app/views/admins/producers/edit.html.erb</p>
+<%= render 'admins/tops/header' %>
+<div class="edit_producer">
+<h1> プロデューサー編集</h1>
+
+<%= form_for @producer, url: admins_producer_path(@producer) do |f| %>
+	<% if @producer.errors.any? %>
+	<div class="alert-alert-warinig">
+		<p class="error-count"><%= @producer.errors.full_messages.count %>errors prohibited this end_user from being saved:</p>
+		<ul>
+			<% @producer.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+
+    <% end %>
+    <div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+		<label>会員ステータス</label>
+		<div>
+			<%= radio_button_tag(:status, 0) %>
+			<%= label_tag(:status_0, "有効") %>
+			<%= radio_button_tag(:status, 1) %>
+			<%= label_tag(:status_1, "退会済み") %>
+		</div>
+	</div>
+	<div class="field">
+		<%= f.submit '編集する', class: "button" %>
+	</div>
+<% end %>
+</div>
+
+<style>
+
+.edit_producer {
+  width:1200px;
+  margin:0 auto;
+  text-align: center;
+}
+
+.field{
+  width:250px;
+  margin:10px auto;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #03A9F4;
+  border: solid 1px #0f9ada;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.button:active {
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+</style>

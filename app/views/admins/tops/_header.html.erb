@@ -1,0 +1,71 @@
+
+
+<header class="navbar">
+	<div class="container_head">
+		<nav class="nav navbar-nav navbar-left">
+			<span class="title1">Dont Forget OMIYAGE</span>
+		</nav>
+		<nav class="right">
+
+			<% if admin_signed_in? %>
+				<div class="item"><%= link_to admins_tops_path do %>
+				Home<% end %>
+				</div>
+				<div class="item"><%= link_to admins_end_users_path do %>
+				User <% end %>
+				</div>
+				<div class="item"><%= link_to admins_producers_path do %>
+				Producer<% end %>
+				</div>
+
+				<div class="item"><%= link_to destroy_admin_session_path, method: :delete do %> 
+				Logout<% end %>
+				</div>
+
+
+			<% else %>
+				<div class="item"><%= link_to root_path do %>
+							Top<% end %>
+				</div>
+
+				<div class="item"><%= link_to new_admin_session_path do %>
+									login<% end %>
+				</div>
+			<% end %>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.title1{
+		color:#FFFFFF;
+		font-size:55px;
+		font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+	}
+	a{
+		font-family: 'Comic Sans MS','Corbel','Javanese Text','Arial',sans-serif;
+	}
+
+
+	.item{
+		color:#FFFFFF;
+		float:left;
+		text-align: right;
+		font-size:25px;
+		margin: 20px 10px;
+	}
+	.item a:link { color: white; }
+	.item a:visited { color: white; }
+	.item a:hover { color: white; }
+	.item a:active { color: white; }
+	.nav > li > a{
+		position: relative;
+		display: block;
+		margin: 12px 15px;
+		font-size:15px;
+	}
+	.right{
+		float: right !important;
+		margin-right: 5px auto;
+	}
+</style>

@@ -8,11 +8,28 @@ class Admins::ProducersController < ApplicationController
   end
 
   def edit
+    @producer = Producer.find(params[:id])
+  end
+
+  def update
+    @producer = Producer.with_deleted.find(params[:id])
+    if @producer.update(producer_params)
+    case params[:status]
+    when "0"
+      @producer.restore
+      redirect_to admins_producers_path
+    when "1"
+      @producer.destroy
+      redirect_to admins_producers_path
+    else
+       render :edit
+    end
+  end
   end
 
   private
   def producer_params
-      pramas.require(:proudcer).permit(:name, :deleted_at)
+      params.require(:producer).permit(:name, :deleted_at)
   end
 end
 

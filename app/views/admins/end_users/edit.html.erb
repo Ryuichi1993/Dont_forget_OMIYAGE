@@ -1,4 +1,6 @@
-<h1> end_user edit</h1>
+<%= render 'admins/tops/header' %>
+<div class="edit_end_user">
+<h1> ユーザー編集</h1>
 
 <%= form_for @end_user, url: admins_end_user_path(@end_user) do |f| %>
 	<% if @end_user.errors.any? %>
@@ -35,6 +37,41 @@
 		</div>
 	</div>
 	<div class="field">
-		<%= f.submit 'Update User' %>
+		<%= f.submit 'Update User', class: "button" %>
 	</div>
 <% end %>
+</div>
+
+<style>
+
+.edit_end_user {
+  width:1200px;
+  margin:0 auto;
+  text-align: center;
+}
+
+.field{
+  width:250px;
+  margin:10px auto;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #03A9F4;
+  border: solid 1px #0f9ada;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.button:active {
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+</style>

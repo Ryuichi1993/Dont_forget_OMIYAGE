@@ -1,5 +1,5 @@
 <h1><%= @shop.shop_name %>の商品一覧</h1>
-<% @product.each do |p| %>
+<%= @shop.products.each do |p| %>
 <table>
 	<thead>
 		<tr>

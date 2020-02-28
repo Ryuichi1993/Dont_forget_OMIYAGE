@@ -4,7 +4,7 @@
 		<h1><%= @product.product_name %>の詳細ページ</h1>
 	</div>
 	<div class="product">
-		<%= attachment_image_tag @prouduct, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %>
+		<%= attachment_image_tag @product, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %>
 		<div class="product_int">
 			<p>商品名:<%= @product.product_name %></p>
 			<p>商品価格:<%= @product.product_price %></p>

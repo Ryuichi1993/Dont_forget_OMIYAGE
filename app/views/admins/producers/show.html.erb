@@ -1,3 +1,5 @@
+<%= render 'admins/tops/header' %>
+<div class="producers">
 <h1><%= @producer.name %>さんの詳細ページ</h1>
 
 <p>店舗管理者ID</p>
@@ -12,6 +14,16 @@
 	<%= @producer.name %>
 <p>店舗管理者email</p>
 	<%= @producer.email %>
+<br>
 <%= link_to "店舗一覧を見る", admins_shops_path %>
-<%= link_to "編集する", edit_admins_end_user_path(@producer) %>
+<%= link_to "編集する", edit_admins_producer_path(@producer) %>
 
+</div>
+
+<style>
+
+.producers{
+	text-align: center;
+}
+
+</style>

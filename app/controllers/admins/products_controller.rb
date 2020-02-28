@@ -3,12 +3,16 @@ class Admins::ProductsController < ApplicationController
   	@shops = Shop.all
   	@shops.each do |s|
   	@shop = s
+    @product = s.products
     end
-    @product = @shop.products
   end
 
   def show
   	@product = Product.find(params[:id])
+  end
+
+  def product_show
+    @shop = Shop.find(params[:id])
   end
 
   def edit

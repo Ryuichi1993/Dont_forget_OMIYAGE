@@ -77,7 +77,10 @@ namespace :admins do
   resources :end_users
   resources :producers
   resources :shops
-  resources :products
+  resources :products do
+    get 'product_show', on: :member
+  end
+  get 'product_show', to: 'adimins#product_show'
 end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
