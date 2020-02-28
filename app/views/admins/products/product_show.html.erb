@@ -1,8 +1,8 @@
 <%= render 'admins/tops/header' %>
 <div class="product_all">
 	<h1><%= @shop.shop_name %>の商品一覧</h1>
-	<div class="product">
 	<% @shop.products.each do |p| %>
+	<div class="product">
 	<%= attachment_image_tag p, :product_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200', class: "product_image1" %>
 
 	<div class="product_int">

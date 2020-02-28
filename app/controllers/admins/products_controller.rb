@@ -22,7 +22,7 @@ class Admins::ProductsController < ApplicationController
   def update
   	@product = Product.find(params[:id])
   	if @product.update(product_params)
-       redirect_to admins_products_path
+       redirect_to admins_shops_path
     else
     	render :edit
     end
@@ -31,7 +31,7 @@ class Admins::ProductsController < ApplicationController
   def destroy
   	@product = Product.find(params[:id])
   	if @product.destroy
-  		redirect_to admins_products_path
+  		redirect_to admins_shops_path
   	else
   		render :show
   	end
