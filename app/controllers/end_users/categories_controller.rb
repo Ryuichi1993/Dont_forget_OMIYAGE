@@ -4,7 +4,6 @@ class EndUsers::CategoriesController < ApplicationController
   end
 
   def show
-  	@product_category = ProductCategory.find(params[:id])
   	@categories = Category.find(params[:id])
   	@category = @categories.products.page(params[:page]).reverse_order
   end

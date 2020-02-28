@@ -5,7 +5,7 @@
 		<main class="clearfix">
 			<% @memories.each do |p| %>
 			<div class="memory">
-				<div><%= attachment_image_tag p.product, :product_image, :fill, 400, 200, fallback: "no_image.jpg", size: '400x200', class="product_iamge1" %>
+				<div><%= attachment_image_tag p.product, :product_image, :fill, 400, 200, fallback: "no_image.jpg", size: '400x200', class: "product_iamge1" %>
 				</div>
 				<div class="product">
 					<p>商品名:<%= p.product.product_name %></p>

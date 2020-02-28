@@ -11,7 +11,7 @@ class EndUsers::MemoriesController < ApplicationController
   def create
  	@memory = current_end_user.memories.new(memory_params)
 	if @memory.save!
-	redirect_to end_users_memories_path(@memory)
+	redirect_to end_users_memories_path
 	else
 		render :show
 	end
